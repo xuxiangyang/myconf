@@ -1,0 +1,1 @@
+("~/" "~/Documents/rails_project/scout/" "~/Documents/rails_project/spiderman/")
