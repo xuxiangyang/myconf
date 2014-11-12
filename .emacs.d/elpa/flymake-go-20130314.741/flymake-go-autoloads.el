@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads nil nil ("flymake-go-pkg.el" "flymake-go.el") (21595
-;;;;;;  32739 913274 0))
+;;;### (autoloads nil nil ("flymake-go-pkg.el" "flymake-go.el") (21603
+;;;;;;  19535 44658 0))
 
 ;;;***
 

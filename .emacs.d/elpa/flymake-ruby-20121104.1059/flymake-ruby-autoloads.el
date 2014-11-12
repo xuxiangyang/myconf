@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (flymake-ruby-load) "flymake-ruby" "flymake-ruby.el"
-;;;;;;  (21588 59812 0 0))
+;;;;;;  (21602 44510 0 0))
 ;;; Generated autoloads from flymake-ruby.el
 
 (autoload 'flymake-ruby-load "flymake-ruby" "\
@@ -14,7 +14,7 @@ Configure flymake mode to check the current buffer's ruby syntax.
 
 ;;;***
 
-;;;### (autoloads nil nil ("flymake-ruby-pkg.el") (21588 59812 451248
+;;;### (autoloads nil nil ("flymake-ruby-pkg.el") (21602 44510 928388
 ;;;;;;  0))
 
 ;;;***

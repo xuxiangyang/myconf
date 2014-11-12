@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (flymake-haml-load) "flymake-haml" "flymake-haml.el"
-;;;;;;  (21593 40080 0 0))
+;;;;;;  (21602 44529 0 0))
 ;;; Generated autoloads from flymake-haml.el
 
 (autoload 'flymake-haml-load "flymake-haml" "\
@@ -18,7 +18,7 @@ does not alter flymake's global configuration, so function
 
 ;;;***
 
-;;;### (autoloads nil nil ("flymake-haml-pkg.el") (21593 40080 977790
+;;;### (autoloads nil nil ("flymake-haml-pkg.el") (21602 44529 565967
 ;;;;;;  0))
 
 ;;;***

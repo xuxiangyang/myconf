@@ -1,3 +1,5 @@
+;; package --- smarry
+;;; Commentary:
 ;; package 包管理
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -6,8 +8,6 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
-
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; 显示行号
 (require 'linum)
@@ -46,9 +46,9 @@
 (ido-mode t)
 
 ;; 自动括号
-(autoload 'autopair-global-mode "autopair" nil t)
-    (autopair-global-mode)
-    (add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))
+;(autoload 'autopair-global-mode "autopair" nil t)
+;    (autopair-global-mode)
+;    (add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))
 
 ;; smex
 (autoload 'smex "smex"
@@ -59,10 +59,8 @@ your recently and most frequently used commands.")
 (put 'upcase-region 'disabled nil)
 
 ;; 补全
+(require 'auto-complete-config)
 (ac-config-default)
-(custom-set-variables
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
-(custom-set-faces )
 (ac-set-trigger-key nil)
 (setq ac-auto-start t)
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
@@ -112,15 +110,6 @@ your recently and most frequently used commands.")
 (setq uniquify-buffer-name-style 'forward)
 (menu-bar-mode -1)
 
-;;错误提醒
-(require 'flymake-easy)
-(flymake-mode t)
-(require 'flymake-ruby)
-(add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
-(custom-set-faces
-   '(flymake-errline ((((class color)) (:underline "red"))))
-    '(flymake-warnline ((((class color)) (:underline "yellow")))))
-
 ;;行尾自动加换行
 (add-hook 'enh-ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
 
@@ -139,15 +128,36 @@ your recently and most frequently used commands.")
 
 ;;golang
 ;;=======================================================================
-
-(require 'go-autocomplete)
-(require 'auto-complete-config)
+(require 'go-mode)
 (require 'go-mode-autoloads)
-(require 'flymake-go)
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook
           (lambda ()
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq tab-width 4)
             (setq indent-tabs-mode 1)))
+(setq gofmt-show-errors nil)
+(add-to-list 'ac-modes 'go-mode)
 ;;======================================================================
+;; 错误检查
+(require 'flymake-easy)
+(flymake-mode t)
+(require 'flymake-ruby)
+(add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
+(eval-after-load "go-mode" '(require 'flymake-go))
+
+;;主题
+(load-theme 'zenburn t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((encoding . utf-8)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
