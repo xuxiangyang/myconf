@@ -29,10 +29,6 @@
           scroll-margin 3
           scroll-conservatively 10000)
 
-(setq     scroll-step 1
-          scroll-margin 3
-          scroll-conservatively 10000)
-
 ;; 关闭自动保存
 (setq auto-save-mode nil)
 (setq auto-save-default nil)
@@ -45,10 +41,11 @@
 (require 'ido)
 (ido-mode t)
 
-;; 自动括号
-;(autoload 'autopair-global-mode "autopair" nil t)
-;    (autopair-global-mode)
-;    (add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))
+
+;;自动括号
+;; (autoload 'autopair-global-mode "autopair" nil t)
+;;    (autopair-global-mode)
+;;    (add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))
 
 ;; smex
 (autoload 'smex "smex"
@@ -110,18 +107,16 @@ your recently and most frequently used commands.")
 (setq uniquify-buffer-name-style 'forward)
 (menu-bar-mode -1)
 
-;;行尾自动加换行
-(add-hook 'enh-ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
 
 ;; 与mac os 公用粘贴板
 (defun copy-from-osx ()
-    (shell-command-to-string "pbpaste"))
+(shell-command-to-string "pbpaste"))
 
 (defun paste-to-osx (text &optional push)
-    (let ((process-connection-type nil))
-          (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-                  (process-send-string proc text)
-                        (process-send-eof proc))))
+(let ((process-connection-type nil))
+(let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+(process-send-string proc text)
+(process-send-eof proc))))
 
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
@@ -167,7 +162,7 @@ your recently and most frequently used commands.")
 (global-set-key (kbd "M-p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
 
-;; def end 的使用
+;;def end 的使用
 (when (require 'smartparens nil 'noerror)
   (require 'smartparens-ruby))
 (smartparens-global-mode t)
