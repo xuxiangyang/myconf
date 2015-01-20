@@ -17,3 +17,7 @@ nytprof.out
 /pm_to_blib
 *.o
 *.bs
+emacs.d/ac-comphist.dat
+emacs.d/auto-save-list
+emacs.d/ido.last
+emacs.d/projectile-bookmarks.eld

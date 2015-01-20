@@ -1,1 +1,1 @@
-("~/Documents/rails_project/spiderman/" "~/Documents/rails_project/scout/" "~/Documents/go_project/proxy_scanner/src/gopkg.in/redis.v2/" "~/")
+("~/Documents/LifeRecord/myconf/" "~/Documents/rails_project/spiderman/" "~/Documents/rails_project/scout/" "~/Documents/go_project/proxy_scanner/src/gopkg.in/redis.v2/" "~/")

@@ -160,3 +160,19 @@ your recently and most frequently used commands.")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; 多点编辑
+(require 'multiple-cursors)
+(global-set-key (kbd "M-l") 'mc/edit-lines)
+(global-set-key (kbd "M-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-n") 'mc/mark-next-like-this)
+
+;; def end 的使用
+(when (require 'smartparens nil 'noerror)
+  (require 'smartparens-ruby))
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+
+;; org mode增加状态
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE" "ABANDON")))
