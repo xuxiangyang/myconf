@@ -41,12 +41,6 @@
 (require 'ido)
 (ido-mode t)
 
-
-;;自动括号
-;; (autoload 'autopair-global-mode "autopair" nil t)
-;;    (autopair-global-mode)
-;;    (add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))
-
 ;; smex
 (autoload 'smex "smex"
   "Smex is a M-x enhancement for Emacs, it provides a convenient interface to
@@ -70,12 +64,6 @@ your recently and most frequently used commands.")
                 '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 ;; rails 项目管理
 (projectile-global-mode)
  (add-hook 'projectile-mode-hook 'projectile-rails-on)
@@ -87,14 +75,9 @@ your recently and most frequently used commands.")
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
-;; 同步系统剪贴板
-(setq x-select-enable-clipboard t)
-
 ;; 超过100字自动换行
 (setq default-fill-column 100)
 
-;; 行末加新的换行
-(setq-default require-final-newline t)
 ;; 去除空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -107,8 +90,8 @@ your recently and most frequently used commands.")
 (setq uniquify-buffer-name-style 'forward)
 (menu-bar-mode -1)
 
-
-;; 与mac os 公用粘贴板
+;; 同步系统剪贴板
+(setq x-select-enable-clipboard t)
 (defun copy-from-osx ()
 (shell-command-to-string "pbpaste"))
 
@@ -122,7 +105,6 @@ your recently and most frequently used commands.")
 (setq interprogram-paste-function 'copy-from-osx)
 
 ;;golang
-;;=======================================================================
 (require 'go-mode)
 (require 'go-mode-autoloads)
 (add-hook 'before-save-hook 'gofmt-before-save)
@@ -133,7 +115,7 @@ your recently and most frequently used commands.")
             (setq indent-tabs-mode 1)))
 (setq gofmt-show-errors nil)
 (add-to-list 'ac-modes 'go-mode)
-;;======================================================================
+
 ;; 错误检查
 (require 'flymake-easy)
 (flymake-mode t)
@@ -143,18 +125,6 @@ your recently and most frequently used commands.")
 
 ;;主题
 (load-theme 'monokai t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; 多点编辑
 (require 'multiple-cursors)
@@ -162,10 +132,8 @@ your recently and most frequently used commands.")
 (global-set-key (kbd "M-p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
 
-;;def end 的使用
-(when (require 'smartparens nil 'noerror)
-  (require 'smartparens-ruby))
-(smartparens-global-mode t)
+;; smartparens
+(require 'smartparens-config)
 (show-smartparens-global-mode t)
 
 ;; org mode增加状态
