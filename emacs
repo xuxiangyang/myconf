@@ -147,8 +147,7 @@ your recently and most frequently used commands.")
 (eval-after-load "go-mode" '(require 'flymake-go))
 
 ;;主题
-(load-theme 'zenburn t)
-
+(load-theme 'monokai t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
