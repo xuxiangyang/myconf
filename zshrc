@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-plugins=(git osx ruby github golang rails bundler rvm rake)
+plugins=(docker git osx ruby github golang rails bundler rvm rake)
 
 export LANG=en_US.UTF-8
 
@@ -27,3 +27,8 @@ bindkey -e
 alias rake='noglob rake'
 
 export TERM=xterm-256color
+
+# docker
+export DOCKER_CERT_PATH=/Users/xxy/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376    

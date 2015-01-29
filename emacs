@@ -140,6 +140,10 @@ your recently and most frequently used commands.")
 ;; org mode增加状态
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "ABANDON")))
+(setq org-startup-indented t)
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -152,3 +156,9 @@ your recently and most frequently used commands.")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; makrdown-model
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . markdown-mode))
