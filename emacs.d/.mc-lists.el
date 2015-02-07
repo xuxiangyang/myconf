@@ -3,6 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        beginning-of-buffer
+        org-beginning-of-line
+        org-self-insert-command
         org-todo
         smex
         ))
