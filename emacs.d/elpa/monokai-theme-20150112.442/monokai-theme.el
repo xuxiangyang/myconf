@@ -4,7 +4,8 @@
 
 ;; Author: Kelvin Smith <oneKelvinSmith@gmail.com>
 ;; URL: http://github.com/oneKelvinSmith/monokai-emacs
-;; Version: 0.2.0
+;; Version: 20150112.442
+;; X-Original-Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -458,7 +459,7 @@ Also affects 'linum-mode' background."
                                     :foreground ,terminal-monokai-bg))))
 
    `(cua-rectangle
-     ((,class (:inherit region
+    ((,class (:inherit region
                         :background ,magenta
                         :foreground ,monokai-bg))
       (,terminal-class (:inherit region
@@ -850,9 +851,9 @@ Also affects 'linum-mode' background."
 
    `(font-lock-type-face
      ((,class (:foreground ,blue
-                           :italic t))
+                           :italic nil))
       (,terminal-class (:foreground ,terminal-blue
-                                    :italic t))))
+                                    :italic nil))))
 
    `(font-lock-variable-name-face
      ((,class (:foreground ,orange))
@@ -4007,6 +4008,11 @@ Also affects 'linum-mode' background."
    `(paren-face
      ((,terminal-class (:foreground ,monokai-comments))))
 
+   ;; perspective
+   `(persp-selected-face
+     ((,class (:foreground ,blue
+                           :weight bold))))
+
    ;; pretty-mode
    `(pretty-mode-symbol-face
      ((,class (:foreground ,yellow
@@ -4551,54 +4557,54 @@ Also affects 'linum-mode' background."
 
    ;; syslog-mode
    `(syslog-ip-face
-     '((,class (:background unspecified
-                            :foreground ,yellow))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-yellow))))
+     ((,class (:background unspecified
+                           :foreground ,yellow))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-yellow))))
 
    `(syslog-hour-face
-     '((,class (:background unspecified
-                            :foreground ,green))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-green))))
+     ((,class (:background unspecified
+                           :foreground ,green))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-green))))
 
    `(syslog-error-face
-     '((,class (:background unspecified
-                            :foreground ,red
-                            :weight bold))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-red
-                                     :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,red
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-red
+                                    :weight bold))))
 
    `(syslog-warn-face
-     '((,class (:background unspecified
-                            :foreground ,orange
-                            :weight bold))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-orange
-                                     :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,orange
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-orange
+                                    :weight bold))))
 
    `(syslog-info-face
-     '((,class (:background unspecified
-                            :foreground ,blue
-                            :weight bold))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-blue
-                                     :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,blue
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-blue
+                                    :weight bold))))
 
    `(syslog-debug-face
-     '((,class (:background unspecified
-                            :foreground ,cyan
-                            :weight bold))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-cyan
-                                     :weight bold))))
+     ((,class (:background unspecified
+                           :foreground ,cyan
+                           :weight bold))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-cyan
+                                    :weight bold))))
 
    `(syslog-su-face
-     '((,class (:background unspecified
-                            :foreground ,magenta))
-       (,terminal-class (:background unspecified
-                                     :foreground ,terminal-magenta))))
+     ((,class (:background unspecified
+                           :foreground ,magenta))
+      (,terminal-class (:background unspecified
+                                    :foreground ,terminal-magenta))))
 
    ;; table
    `(table-cell
@@ -4656,11 +4662,11 @@ Also affects 'linum-mode' background."
       (,terminal-class (:foreground ,terminal-monokai-emph
                                     :background ,terminal-monokai-fg))))
 
-   '(term-default-fg-color
+   `(term-default-fg-color
      ((,class (:inherit term-color-white))
       (,terminal-class (:inherit term-color-white))))
 
-   '(term-default-bg-color
+   `(term-default-bg-color
      ((,class (:inherit term-color-black))
       (,terminal-class (:inherit term-color-black))))
 
@@ -5255,7 +5261,7 @@ Also affects 'linum-mode' background."
      ((,class (:underline t
                           :weight bold))
       (,terminal-class (:underline t
-                                   :weight termisnal-bold))))
+                                   :weight bold))))
 
    ;; weechat
    `(weechat-error-face
@@ -5329,12 +5335,12 @@ Also affects 'linum-mode' background."
    `(magit-diff-use-overlays nil)
 
    ;; highlight-changes
-   `(highlight-changes-colors '(,magenta ,violet))
+   `(highlight-changes-colors (,magenta ,violet))
 
    ;; highlight-tail
    `(highlight-tail-colors
-     '((,monokai-hl . 0)(,green-lc . 20)(,cyan-lc . 30)(,blue-lc . 50)
-       (,yellow-lc . 60)(,orange-lc . 70)(,magenta-lc . 85)(,monokai-hl . 100)))
+     ((,monokai-hl . 0)(,green-lc . 20)(,cyan-lc . 30)(,blue-lc . 50)
+      (,yellow-lc . 60)(,orange-lc . 70)(,magenta-lc . 85)(,monokai-hl . 100)))
 
 
    ;; vc
@@ -5362,14 +5368,14 @@ Also affects 'linum-mode' background."
 
    ;; weechat
    `(weechat-color-list
-     '(unspecified ,monokai-bg ,monokai-hl
-                   ,red-d ,red
-                   ,green-d ,green
-                   ,yellow-d ,yellow
-                   ,blue-d ,blue
-                   ,magenta-d ,magenta
-                   ,cyan-d ,cyan
-                   ,monokai-fg ,monokai-emph))))
+     (unspecified ,monokai-bg ,monokai-hl
+                  ,red-d ,red
+                  ,green-d ,green
+                  ,yellow-d ,yellow
+                  ,blue-d ,blue
+                  ,magenta-d ,magenta
+                  ,cyan-d ,cyan
+                  ,monokai-fg ,monokai-emph))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
@@ -5381,6 +5387,7 @@ Also affects 'linum-mode' background."
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; eval: (when (fboundp 'rainbow-mode) (rainbow-mode 1))
+;; eval: (when (fboundp 'aggressive-indent-mode) (aggressive-indent-mode -1))
 ;; fill-column: 95
 ;; End:
 
