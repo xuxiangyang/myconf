@@ -1,4 +1,4 @@
-;; package --- smarry
+; package --- smarry
 ;;; Commentary:
 ;; package 包管理
 (require 'package)
@@ -123,6 +123,7 @@ your recently and most frequently used commands.")
 (require 'flymake-ruby)
 (add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
 (eval-after-load "go-mode" '(require 'flymake-go))
+(require 'flymake-cursor)
 
 ;;主题
 (load-theme 'monokai t)
