@@ -2,6 +2,10 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 SABLE_AUTO_TITLE="true"
+CASE_SENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
