@@ -36,3 +36,7 @@ export TERM=xterm-256color
 export DOCKER_CERT_PATH=/Users/xxy/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376    
+
+#Gopath, use gopm to mannge multi projects
+export GOPATH=$HOME/.go_path
+export PATH=$GOPATH/bin:$PATH
