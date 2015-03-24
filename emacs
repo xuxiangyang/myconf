@@ -163,3 +163,6 @@ your recently and most frequently used commands.")
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . markdown-mode))
+
+;; neotree
+(setq projectile-switch-project-action 'neotree-projectile-action)
