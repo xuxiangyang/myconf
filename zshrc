@@ -39,6 +39,8 @@ export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376    
 
 #Gopath, use gopm to mannge multi projects
-export GOPATH=$HOME/.go_path
+export GOPATH=$HOME/Documents/go_path
 export PATH=$GOPATH/bin:$PATH
 alias g='gom'
+alias setgopath='export GOPATH=`godep path`:$GOPATH'
+alias unsetgopath='export GOPATH=$HOME/Documents/go_path'
