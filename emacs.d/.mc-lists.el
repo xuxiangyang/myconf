@@ -4,6 +4,8 @@
 (setq mc/cmds-to-run-for-all
       '(
         beginning-of-buffer
+        comment-dwim
+        indent-for-tab-command
         org-beginning-of-line
         org-self-insert-command
         org-todo

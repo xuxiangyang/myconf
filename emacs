@@ -166,3 +166,7 @@ your recently and most frequently used commands.")
 
 ;; neotree
 (setq projectile-switch-project-action 'neotree-projectile-action)
+
+;;window-numbering
+(require 'window-numbering)
+(window-numbering-mode 1)
