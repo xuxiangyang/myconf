@@ -82,6 +82,9 @@ your recently and most frequently used commands.")
 ;; 去除空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; 结尾新增空行
+(add-hook 'enh-ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
+
 ;; 不显示tutorial
 (setq inhibit-startup-message t)
 (setq initial-scratch-message ";; Hello xxy, Have a good time!")
@@ -170,3 +173,14 @@ your recently and most frequently used commands.")
 ;;window-numbering
 (require 'window-numbering)
 (window-numbering-mode 1)
+
+;; copy file-name to clipboard
+(defun copy-file-name ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (file-name-nondirectory buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
