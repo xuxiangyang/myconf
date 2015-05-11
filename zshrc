@@ -5,7 +5,6 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(docker git osx ruby github golang rails bundler rvm rake)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,6 +21,7 @@ alias e='emacs-24.3'
 alias tailf='tail -f'
 alias gck="git checkout"
 alias gci="git commit"
+alias gb=$GOPATH/bin/gb
 
 memcached -d
 
@@ -44,3 +44,5 @@ export PATH=$GOPATH/bin:$PATH
 alias g='gom'
 alias setgopath='export GOPATH=`godep path`:$GOPATH'
 alias unsetgopath='export GOPATH=$HOME/Documents/go_path'
+
+export BUNDLER_EDITOR=subl
