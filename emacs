@@ -1,4 +1,4 @@
-; package --- smarry
+ ;; package --- smarry
 ;;; Commentary:
 ;; package 包管理
 (require 'package)
@@ -60,14 +60,14 @@ your recently and most frequently used commands.")
 (define-key ac-complete-mode-map "\t" nil)
 ;;rake
 (add-to-list 'auto-mode-alist
-                '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
+             '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
-                '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
+             '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
 ;; rails 项目管理
 (projectile-global-mode)
- (add-hook 'projectile-mode-hook 'projectile-rails-on)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 ;; 去除临时文件
 (setq make-backup-files nil)
@@ -97,13 +97,13 @@ your recently and most frequently used commands.")
 ;; 同步系统剪贴板
 (setq x-select-enable-clipboard t)
 (defun copy-from-osx ()
-(shell-command-to-string "pbpaste"))
+  (shell-command-to-string "pbpaste"))
 
 (defun paste-to-osx (text &optional push)
-(let ((process-connection-type nil))
-(let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-(process-send-string proc text)
-(process-send-eof proc))))
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
 
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
@@ -163,7 +163,7 @@ your recently and most frequently used commands.")
 
 ;; makrdown-model
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . markdown-mode))
 
@@ -184,3 +184,45 @@ your recently and most frequently used commands.")
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+;; recreate scratch buffer after kill it
+(save-excursion
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer))
+
+(defun kill-scratch-buffer ()
+  ;; The next line is just in case someone calls this manually
+  (set-buffer (get-buffer-create "*scratch*"))
+  ;; Kill the current (*scratch*) buffer
+  (remove-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  (kill-buffer (current-buffer))
+  ;; Make a brand new *scratch* buffer
+  (set-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (make-local-variable 'kill-buffer-query-functions)
+  (add-hook 'kill-buffer-query-functions 'kill-scratch-buffer)
+  ;; Since we killed it, don't let caller do that.
+  nil)
+
+
+;;sql
+(eval-after-load "sql"
+  (load-library "sql-indent"))
+
+;;web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-enable-auto-closing t)
+
+;;退出时需要确认
+(setq confirm-kill-emacs 'y-or-n-p)
+
+;;emacs 配置文件使用lisp-mode
+(add-to-list 'auto-mode-alist '("\\emacs\\'" . lisp-mode))
+
+;;自动跟踪link
+(setq vc-follow-symlinks t)
