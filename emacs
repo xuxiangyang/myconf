@@ -19,8 +19,9 @@
 (setq-default tab-width 2)
 
 ;; 括号匹配
+(setq show-paren-delay 0)
 (show-paren-mode t)
-(setq show-paren-style 'parentheses)
+(setq show-paren-style 'parenthesis)
 
 ;; 缩写yes no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -77,7 +78,7 @@ your recently and most frequently used commands.")
 (setq create-lockfiles nil)
 
 ;; 超过100字自动换行
-(setq default-fill-column 100)
+(setq default-fill-column 120)
 
 ;; 去除空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -87,7 +88,7 @@ your recently and most frequently used commands.")
 
 ;; 不显示tutorial
 (setq inhibit-startup-message t)
-(setq initial-scratch-message ";; Hello xxy, Have a good time!")
+(setq initial-scratch-message "")
 
 ;; 同名文件提示
 (require 'uniquify)
@@ -146,19 +147,10 @@ your recently and most frequently used commands.")
       '((sequence "TODO" "|" "DONE" "ABANDON")))
 (setq org-startup-indented t)
 
-
-
+;; Add by emacs
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )
 
 ;; makrdown-model
@@ -184,6 +176,15 @@ your recently and most frequently used commands.")
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+;; delete current buffer file
+(defun delete-current-file ()
+  "Delete the current buffer file"
+  (interactive)
+  (delete-file (buffer-file-name (current-buffer)))
+  (kill-buffer (current-buffer))
+  (message "delete and kill current buffer file")
+  )
 
 ;; recreate scratch buffer after kill it
 (save-excursion
@@ -222,7 +223,7 @@ your recently and most frequently used commands.")
 (setq confirm-kill-emacs 'y-or-n-p)
 
 ;;emacs 配置文件使用lisp-mode
-(add-to-list 'auto-mode-alist '("\\emacs\\'" . lisp-mode))
+(add-to-list 'auto-mode-alist '("\\emacs\\'" . emacs-lisp-mode))
 
 ;;自动跟踪link
 (setq vc-follow-symlinks t)
