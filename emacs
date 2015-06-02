@@ -181,10 +181,13 @@ your recently and most frequently used commands.")
 (defun delete-current-file ()
   "Delete the current buffer file"
   (interactive)
-  (delete-file (buffer-file-name (current-buffer)))
-  (kill-buffer (current-buffer))
-  (message "delete and kill current buffer file")
+  (when (yes-or-no-p "sure?")
+    (delete-file (buffer-file-name (current-buffer)))
+    (kill-buffer (current-buffer))
+    (message "delete and kill current buffer file")
+    )
   )
+
 
 ;; recreate scratch buffer after kill it
 (save-excursion
