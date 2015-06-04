@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/xxy/.emacs.d'
+let g:netrw_dirhist_2='/Users/xxy'
+let g:netrw_dirhist_3='/Users/xxy/.emacs.d/themes'
+let g:netrw_dirhist_4='/Users/xxy/Documents/LifeRecord/myconf/.git'
+let g:netrw_dirhist_5='/Users/xxy/Documents/go_path/src/gorevel/Godeps'
+let g:netrw_dirhist_6='/usr/local/bin'

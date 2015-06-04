@@ -7,3 +7,4 @@ install:
 	ln -svn $(PWD)/tmux.conf $(HOME)/.tmux.conf
 	ln -svn $(PWD)/zshrc $(HOME)/.zshrc
 	ln -svn $(PWD)/vimrc $(HOME)/.vimrc
+	ln -svn $(PWD)/vim $(HOME)/.vim
