@@ -121,14 +121,6 @@ your recently and most frequently used commands.")
 (setq gofmt-show-errors nil)
 (add-to-list 'ac-modes 'go-mode)
 
-;; 错误检查
-(require 'flymake-easy)
-(flymake-mode t)
-(require 'flymake-ruby)
-(add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
-(eval-after-load "go-mode" '(require 'flymake-go))
-(require 'flymake-cursor)
-
 ;;主题
 (load-theme 'monokai t)
 
