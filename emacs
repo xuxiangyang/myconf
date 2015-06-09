@@ -141,9 +141,15 @@ your recently and most frequently used commands.")
 
 ;; Add by emacs
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(enh-ruby-check-syntax nil)
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
- )
+ '(flymake-errline ((((class color)) (:background "#292929" :foreground "BrightRed"))))
+ '(flymake-warnline ((((class color)) (:background "#292929" :foreground "Golden")))))
 
 ;; makrdown-model
 (autoload 'markdown-mode "markdown-mode"
@@ -222,3 +228,11 @@ your recently and most frequently used commands.")
 
 ;;自动跟踪link
 (setq vc-follow-symlinks t)
+
+;;错误处理
+(require 'flymake-easy)
+(flymake-mode t)
+(require 'flymake-ruby)
+(add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
+(eval-after-load "go-mode" '(require 'flymake-go))
+(require 'flymake-cursor)
