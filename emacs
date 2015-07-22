@@ -236,3 +236,6 @@ your recently and most frequently used commands.")
 (add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
 (eval-after-load "go-mode" '(require 'flymake-go))
 (require 'flymake-cursor)
+
+;;raml show as yaml
+(add-to-list 'auto-mode-alist '("\\.raml?\\'" . yamly-mode))
