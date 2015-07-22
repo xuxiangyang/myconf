@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
+export PYTHON=$PYTHON:/usr/bin/python
 
 export LANG=en_US.UTF-8
 
@@ -24,8 +25,7 @@ alias tailf='tail -f'
 alias gck="git checkout"
 alias gci="git commit"
 alias gb=$GOPATH/bin/gb
-
-memcached -d
+alias py='python3'
 
 #emacs 键位设定
 bindkey -e
@@ -38,13 +38,14 @@ export TERM=xterm-256color
 # docker
 export DOCKER_CERT_PATH=/Users/xxy/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376    
+export DOCKER_HOST=tcp://192.168.59.103:2376
 
 #Gopath, use gopm to mannge multi projects
-export GOPATH=$HOME/Documents/go_path
+export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
-alias g='gom'
 alias setgopath='export GOPATH=`godep path`:$GOPATH'
-alias unsetgopath='export GOPATH=$HOME/Documents/go_path'
+alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
 
 export BUNDLER_EDITOR=subl
+#[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
+source ~/.nvm/nvm.sh
