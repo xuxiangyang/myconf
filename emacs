@@ -239,3 +239,6 @@ your recently and most frequently used commands.")
 
 ;;raml show as yaml
 (add-to-list 'auto-mode-alist '("\\.raml?\\'" . yamly-mode))
+
+;;js tab size 2
+(setq js-indent-level 2)
