@@ -242,3 +242,8 @@ your recently and most frequently used commands.")
 
 ;;js tab size 2
 (setq js-indent-level 2)
+
+;;ag
+(defun ag ()
+  (interactive)
+  (helm-ag (projectile-project-root)))
