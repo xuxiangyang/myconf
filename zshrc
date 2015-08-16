@@ -5,6 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+plugins=(git bundler osx rake ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
-export PYTHON=$PYTHON:/usr/bin/python
+export PYTHON='/usr/bin/python2.7'
 export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
 
 export LANG=en_US.UTF-8
