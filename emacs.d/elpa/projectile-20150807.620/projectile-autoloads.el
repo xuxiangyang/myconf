@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "projectile" "projectile.el" (21971 57990 0
-;;;;;;  0))
-;;; Generated autoloads from projectile.el
+;;;### (autoloads nil "projectile" "../../../../../../.emacs.d/elpa/projectile-20150807.620/projectile.el"
+;;;;;;  "4f0316898a80a3a8ac23aa653b90dd7a")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/projectile-20150807.620/projectile.el
 
 (autoload 'projectile-cache-current-file "projectile" "\
 Add the currently visited file to the cache.
@@ -245,6 +245,12 @@ Projectile mode is enabled in all buffers where
 See `projectile-mode' for more information on Projectile mode.
 
 \(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/projectile-20150807.620/projectile-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/projectile-20150807.620/projectile.el")
+;;;;;;  (21972 29214 773679 0))
 
 ;;;***
 
