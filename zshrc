@@ -37,11 +37,6 @@ alias rake='noglob rake'
 
 export TERM=xterm-256color
 
-# docker
-export DOCKER_CERT_PATH=/Users/xxy/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
-
 #Gopath, use gopm to mannge multi projects
 export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
@@ -51,3 +46,9 @@ alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
 export BUNDLER_EDITOR=subl
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
 source ~/.nvm/nvm.sh
+
+
+#docker
+export DOCKER_HOST=tcp://192.168.99.100:2376
+export DOCKER_CERT_PATH=/Users/xxy/.docker/machine/machines/default
+export DOCKER_MACHINE_NAME=default
