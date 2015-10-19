@@ -10,3 +10,6 @@ emacs.d/elpa/archives
 
 emacs.elc
 
+vim/.netrwhist
+
+emacs.d/.mc-lists.el
