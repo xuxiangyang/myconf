@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby)
+plugins=(git bundler osx rake ruby docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,6 +40,7 @@ export TERM=xterm-256color
 #Gopath, use gopm to mannge multi projects
 export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 alias setgopath='export GOPATH=`godep path`:$GOPATH'
 alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
 
