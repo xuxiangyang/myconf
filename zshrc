@@ -54,3 +54,10 @@ export DOCKER_HOST=tcp://192.168.99.100:2376
 export DOCKER_CERT_PATH=/Users/xxy/.docker/machine/machines/default
 export DOCKER_MACHINE_NAME=default
 export DOCKER_TLS_VERIFY=1
+
+#npm 
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"
+
