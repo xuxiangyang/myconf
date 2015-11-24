@@ -52,14 +52,15 @@ your recently and most frequently used commands.")
 (put 'upcase-region 'disabled nil)
 
 ;; 补全
-(require 'auto-complete-config)
+;; (require 'auto-complete-config)
 (ac-config-default)
 (ac-set-trigger-key nil)
 (setq ac-auto-start t)
+(define-key ac-complete-mode-map "\t" nil)
+
+;;ruby
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'ac-modes 'enh-ruby-mode)
-(define-key ac-complete-mode-map "\t" nil)
-;;rake
 (add-to-list 'auto-mode-alist
              '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
@@ -213,13 +214,6 @@ your recently and most frequently used commands.")
 (eval-after-load "sql"
   (load-library "sql-indent"))
 
-;;web-mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(setq web-mode-enable-auto-pairing t)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-enable-auto-closing t)
-
 ;;退出时需要确认
 (setq confirm-kill-emacs 'y-or-n-p)
 
@@ -291,12 +285,23 @@ your recently and most frequently used commands.")
 ;; (add-to-list 'auto-mode-alist '("\\.html\\'" . angular-html-mode))
 
 ;;reactjs
+
+;;web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (setq web-mode-content-types-alist
-  '(("jsx" . "\\.js[x]?\\'")))
+			'(("jsx" . "\\.js[x]?\\'")))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
       (let ((web-mode-enable-part-face nil))
         ad-do-it)
-        ad-do-it))
+		ad-do-it))
+
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-enable-auto-closing t)
+
+;;arduino
+(add-to-list 'ac-modes 'arduino-mode)
