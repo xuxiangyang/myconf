@@ -14,7 +14,7 @@
 (global-linum-mode t)
 
 ;;tab
-(setq-default indent-tabs-mode  t)
+(setq-default indent-tabs-mode nil)
 (setq tab-width 2 c-basic-offset 2)
 (setq-default tab-width 2)
 
@@ -288,6 +288,8 @@ your recently and most frequently used commands.")
 
 ;;web-mode
 (require 'web-mode)
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-auto-closing t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
@@ -299,9 +301,14 @@ your recently and most frequently used commands.")
         ad-do-it)
 		ad-do-it))
 
-(setq web-mode-enable-auto-pairing t)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-enable-auto-closing t)
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-html-offset   2)
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)
+            (setq web-mode-code-indent-offset 2)
+           ))
+
 
 ;;arduino
 (add-to-list 'ac-modes 'arduino-mode)
