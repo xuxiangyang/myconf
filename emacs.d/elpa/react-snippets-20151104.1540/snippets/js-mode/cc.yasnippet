@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: React.createClass
+# key: cc
+# --
+require("./$1.css");
+
+import React, { Component } from 'react';
+
+class $1 extends Component {
+  render() {
+    return(
+      <div className="$1">
+        $0
+      </div>
+    )
+  }
+}
+
+$1.propTypes = { $2 };
+
+export default $1;

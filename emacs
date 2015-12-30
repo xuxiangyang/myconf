@@ -307,8 +307,11 @@ your recently and most frequently used commands.")
             (setq web-mode-markup-indent-offset 2)
             (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
-           ))
+            ))
 
+(require 'yasnippet)
+(require 'react-snippets)
+(yas-global-mode 1)
 
 ;;arduino
 (add-to-list 'ac-modes 'arduino-mode)
