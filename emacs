@@ -1,4 +1,4 @@
- ;; package --- smarry
+;; package --- smarry
 ;;; Commentary:
 ;; package 包管理
 (require 'package)
@@ -332,3 +332,12 @@ your recently and most frequently used commands.")
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
+
+;;ace-jump
+(require 'ace-jump-mode)
+(eval-after-load "ace-jump-mode"
+                   '(ace-jump-mode-enable-mark-sync))
+
+(define-key global-map (kbd "C-j") 'ace-jump-line-mode)
+(define-key global-map (kbd "M-j") 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
