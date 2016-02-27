@@ -52,7 +52,7 @@ your recently and most frequently used commands.")
 (put 'upcase-region 'disabled nil)
 
 ;; 补全
-;; (require 'auto-complete-config)
+(require 'auto-complete-config)
 (ac-config-default)
 (ac-set-trigger-key nil)
 (setq ac-auto-start t)
@@ -338,6 +338,26 @@ your recently and most frequently used commands.")
 (eval-after-load "ace-jump-mode"
                    '(ace-jump-mode-enable-mark-sync))
 
-(define-key global-map (kbd "C-j") 'ace-jump-line-mode)
+(define-key global-map (kbd "M-s") 'ace-jump-line-mode)
 (define-key global-map (kbd "M-j") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+;;erlang
+(add-to-list 'ac-modes 'erlang-mode)
+
+(require 'autopair)
+
+(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode))
+(defun turn-on-autopair-mode () (autopair-mode 1))
+(dolist (mode autopair-modes) (add-hook (intern (concat (symbol-name mode) "-hook")) 'turn-on-autopair-mode))
+
+(require 'paredit)
+(defadvice paredit-mode (around disable-autopairs-around (arg))
+  "Disable autopairs mode if paredit-mode is turned on"
+  ad-do-it
+  (if (null ad-return-value)
+      (autopair-mode 1)
+    (autopair-mode 0)
+    ))
+
+(ad-activate 'paredit-mode)
