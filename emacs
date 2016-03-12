@@ -66,6 +66,7 @@ your recently and most frequently used commands.")
 (add-to-list 'auto-mode-alist
              '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
 ;; rails 项目管理
 (projectile-global-mode)
