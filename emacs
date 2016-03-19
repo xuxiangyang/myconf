@@ -348,10 +348,11 @@ your recently and most frequently used commands.")
 
 (require 'autopair)
 
-(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode))
+(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode))
 (defun turn-on-autopair-mode () (autopair-mode 1))
 (dolist (mode autopair-modes) (add-hook (intern (concat (symbol-name mode) "-hook")) 'turn-on-autopair-mode))
 
+;;自动括号
 (require 'paredit)
 (defadvice paredit-mode (around disable-autopairs-around (arg))
   "Disable autopairs mode if paredit-mode is turned on"
@@ -362,3 +363,5 @@ your recently and most frequently used commands.")
     ))
 
 (ad-activate 'paredit-mode)
+
+;;python
