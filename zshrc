@@ -44,7 +44,7 @@ export PATH=/usr/local/bin:$PATH
 alias setgopath='export GOPATH=`godep path`:$GOPATH'
 alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
 
-export BUNDLER_EDITOR=subl
+export BUNDLER_EDITOR=atom
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
 source ~/.nvm/nvm.sh
 
