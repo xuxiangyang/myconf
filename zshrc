@@ -14,7 +14,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
-export PYTHON='/usr/bin/python2.7'
 export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
 
 export LANG=en_US.UTF-8
@@ -27,7 +26,6 @@ alias tailf='tail -f'
 alias gck="git checkout"
 alias gci="git commit"
 alias gb=$GOPATH/bin/gb
-alias py='python3'
 
 #emacs 键位设定
 bindkey -e
@@ -61,3 +59,9 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --disturl=https://npm.taobao.org/dist \
   --userconfig=$HOME/.cnpmrc"
 
+
+#python
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+setopt ignoreeof

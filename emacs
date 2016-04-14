@@ -367,3 +367,6 @@ your recently and most frequently used commands.")
 ;;python
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
+(add-hook 'python-mode-hook (lambda ()
+                              (guess-style-guess-tab-width)))
