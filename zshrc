@@ -38,9 +38,10 @@ export TERM=xterm-256color
 #Gopath, use gopm to mannge multi projects
 export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 alias setgopath='export GOPATH=`godep path`:$GOPATH'
 alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
+export GO15VENDOREXPERIMENT=0
 
 export BUNDLER_EDITOR=atom
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
@@ -65,3 +66,9 @@ export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 setopt ignoreeof
+
+if [ -f ~/.lenvrc ]; then
+  source ~/.lenvrc
+fi
+
+alias pi='pod install --no-repo-update'

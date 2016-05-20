@@ -62,7 +62,7 @@ your recently and most frequently used commands.")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'auto-mode-alist
-             '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
+             '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|god\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
              '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
@@ -340,7 +340,7 @@ your recently and most frequently used commands.")
                    '(ace-jump-mode-enable-mark-sync))
 
 (define-key global-map (kbd "M-s") 'ace-jump-line-mode)
-(define-key global-map (kbd "M-j") 'ace-jump-mode)
+(define-key global-map (kbd "C-h") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 ;;erlang
