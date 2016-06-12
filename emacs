@@ -62,7 +62,7 @@ your recently and most frequently used commands.")
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'auto-mode-alist
-             '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|god\\|ru\\|thor\\|cap\\)\\'" . enh-ruby-mode))
+             '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|god\\|ru\\|jbuilder\\|thor\\|cap\\)\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
              '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))

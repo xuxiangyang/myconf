@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/Users/xxy/.vimpkg/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
 
@@ -72,3 +73,4 @@ if [ -f ~/.lenvrc ]; then
 fi
 
 alias pi='pod install --no-repo-update'
+unsetopt ignoreeof
