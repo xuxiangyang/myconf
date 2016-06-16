@@ -370,3 +370,8 @@ your recently and most frequently used commands.")
 (add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
 (add-hook 'python-mode-hook (lambda ()
                               (guess-style-guess-tab-width)))
+
+(require 'evil)
+(evil-mode 1)
+(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
+(setq evil-emacs-state-modes nil)
