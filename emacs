@@ -42,6 +42,7 @@
 ;; 文件搜索
 (require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 
 ;; smex
 (autoload 'smex "smex"
@@ -67,6 +68,7 @@ your recently and most frequently used commands.")
              '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(setq enh-ruby-add-encoding-comment-on-save nil)
 
 ;; rails 项目管理
 (projectile-global-mode)
@@ -276,8 +278,7 @@ your recently and most frequently used commands.")
 
 (require 'jsx-mode)
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-mode))
+
 
 ;; angular
 ;; (require 'angular-mode)
@@ -309,7 +310,6 @@ your recently and most frequently used commands.")
             (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
             ))
-
 (require 'yasnippet)
 (require 'react-snippets)
 (yas-global-mode 1)
@@ -348,7 +348,7 @@ your recently and most frequently used commands.")
 
 (require 'autopair)
 
-(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode))
+(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode web-mode))
 (defun turn-on-autopair-mode () (autopair-mode 1))
 (dolist (mode autopair-modes) (add-hook (intern (concat (symbol-name mode) "-hook")) 'turn-on-autopair-mode))
 
@@ -371,7 +371,10 @@ your recently and most frequently used commands.")
 (add-hook 'python-mode-hook (lambda ()
                               (guess-style-guess-tab-width)))
 
-(require 'evil)
-(evil-mode 1)
-(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
-(setq evil-emacs-state-modes nil)
+;;(require 'evil)
+;;(evil-mode 1)
+;;(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
+;;(setq evil-emacs-state-modes nil)
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
