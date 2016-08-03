@@ -12,6 +12,7 @@ set softtabstop=4
 set smarttab
 set expandtab
 set number
+set relativenumber
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'

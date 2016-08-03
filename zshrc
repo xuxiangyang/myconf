@@ -18,6 +18,7 @@ export MANPATH=/opt/local/share/man:$MANPATH
 export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
 
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 alias ll='ls -al'
 alias ss='rails s'
@@ -44,16 +45,9 @@ alias setgopath='export GOPATH=`godep path`:$GOPATH'
 alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
 export GO15VENDOREXPERIMENT=0
 
-export BUNDLER_EDITOR=atom
+export BUNDLER_EDITOR=subl
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
 source ~/.nvm/nvm.sh
-
-
-#docker
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/xxy/.docker/machine/machines/default
-export DOCKER_MACHINE_NAME=default
-export DOCKER_TLS_VERIFY=1
 
 #npm 
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -63,8 +57,7 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 
 
 #python
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+export PATH=/usr/local/anaconda2/bin:$PATH
 
 setopt ignoreeof
 
@@ -74,3 +67,11 @@ fi
 
 alias pi='pod install --no-repo-update'
 unsetopt ignoreeof
+
+alias octave=octave-cli
+
+#open_resty
+PATH=/usr/local/openresty/nginx/sbin:$PATH
+
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
