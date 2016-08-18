@@ -41,9 +41,6 @@ export TERM=xterm-256color
 export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
-alias setgopath='export GOPATH=`godep path`:$GOPATH'
-alias unsetgopath='export GOPATH=$HOME/Documents/go_project'
-export GO15VENDOREXPERIMENT=1
 
 export BUNDLER_EDITOR=subl
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
