@@ -348,7 +348,7 @@ your recently and most frequently used commands.")
 
 (require 'autopair)
 
-(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode web-mode))
+(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode web-mode elixir-mode))
 (defun turn-on-autopair-mode () (autopair-mode 1))
 (dolist (mode autopair-modes) (add-hook (intern (concat (symbol-name mode) "-hook")) 'turn-on-autopair-mode))
 
@@ -378,3 +378,8 @@ your recently and most frequently used commands.")
 
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
+
+;;elixir
+(require 'flymake-elixir)
+(add-hook 'elixir-mode-hook 'flymake-elixir-load)
+(add-to-list 'ac-modes 'elixir-mode)

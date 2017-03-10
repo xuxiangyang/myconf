@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir)
+plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -21,7 +21,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 alias ll='ls -al'
-alias ss='rails s'
 alias sc='rails c'
 alias e='emacs'
 alias tailf='tail -f'
@@ -46,7 +45,7 @@ export BUNDLER_EDITOR=subl
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
 source ~/.nvm/nvm.sh
 
-#npm 
+#npm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/dist \
@@ -72,3 +71,4 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
