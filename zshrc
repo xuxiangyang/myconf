@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix)
+plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir)
 
 source $ZSH/oh-my-zsh.sh
 
