@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: React.createClass
+# key: reducer
+# --
+const initialState = {
+$1
+}
+
+export default function(state = initialState, action) {
+  switch(action.type) {$0
+    default:
+      return state;
+  }
+}

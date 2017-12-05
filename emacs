@@ -69,8 +69,9 @@ your recently and most frequently used commands.")
              '("\\(Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . enh-ruby-mode))
 (setq enh-ruby-add-encoding-comment-on-save nil)
-
+(setq enh-ruby-deep-indent-paren nil)
 ;; rails 项目管理
 (projectile-global-mode)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
@@ -384,3 +385,8 @@ your recently and most frequently used commands.")
 (require 'flymake-elixir)
 (add-hook 'elixir-mode-hook 'flymake-elixir-load)
 (add-to-list 'ac-modes 'elixir-mode)
+
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . tomal-mode))
+
+;;thrift
+(add-to-list 'ac-modes 'thrift-mode)

@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir)
+plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir bd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,6 +13,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/depot_tools:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
@@ -72,3 +73,6 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+#mix aotuocomplete
+source ~/.mix_autocomplete.zsh
+source /usr/local/anaconda2/bin/aliyun_zsh_complete.sh
