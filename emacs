@@ -154,6 +154,10 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(flymake-errline ((((class color)) (:background "#292929" :foreground "BrightRed"))))
  '(flymake-warnline ((((class color)) (:background "#292929" :foreground "Golden")))))
 
@@ -298,6 +302,8 @@ your recently and most frequently used commands.")
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.wxs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.wxss\\'" . css-mode))
 (setq web-mode-content-types-alist
 			'(("jsx" . "\\.js[x]?\\'")))
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
@@ -367,13 +373,6 @@ your recently and most frequently used commands.")
 
 (ad-activate 'paredit-mode)
 
-;;python
-(require 'flymake-python-pyflakes)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(add-hook 'python-mode-hook 'guess-style-guess-tabs-mode)
-(add-hook 'python-mode-hook (lambda ()
-                              (guess-style-guess-tab-width)))
-
 ;;(require 'evil)
 ;;(evil-mode 1)
 ;;(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
@@ -391,3 +390,8 @@ your recently and most frequently used commands.")
 
 ;;thrift
 (add-to-list 'ac-modes 'thrift-mode)
+
+;;python
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(elpy-enable)

@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir bd)
+plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir bd python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,3 +76,5 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 #mix aotuocomplete
 source ~/.mix_autocomplete.zsh
 source /usr/local/anaconda2/bin/aliyun_zsh_complete.sh
+
+source activate py3 
