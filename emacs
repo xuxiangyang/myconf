@@ -288,35 +288,15 @@ your recently and most frequently used commands.")
       (switch-to-buffer b))))
 (global-set-key (kbd "\C-x\C-a") 'get-term)
 
-(require 'jsx-mode)
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-
-
-;; angular
-;; (require 'angular-mode)
-;; (require 'angular-html-mode)
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . angular-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html\\'" . angular-html-mode))
-
-;;reactjs
-
 ;;web-mode
 (require 'web-mode)
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-auto-closing t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxss\\'" . css-mode))
-(setq web-mode-content-types-alist
-			'(("jsx" . "\\.js[x]?\\'")))
-(defadvice web-mode-highlight-part (around tweak-jsx activate)
-  (if (equal web-mode-content-type "jsx")
-      (let ((web-mode-enable-part-face nil))
-        ad-do-it)
-		ad-do-it))
 
 (add-hook 'web-mode-hook
           (lambda ()
