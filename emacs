@@ -141,9 +141,12 @@ your recently and most frequently used commands.")
 (show-smartparens-global-mode t)
 
 ;; org mode增加状态
-(setq org-todo-keywords
-      '((sequence "TODO" "|" "DONE" "ABANDON")))
+;; (setq org-todo-keywords
+;;       '((sequence "TODO" "|" "DONE" "ABANDON")))
 (setq org-startup-indented t)
+(setq org-log-done 'time)
+(setq org-src-fontify-natively t)
+
 
 ;; Add by emacs
 (custom-set-variables
@@ -398,3 +401,6 @@ your recently and most frequently used commands.")
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (elpy-enable)
+
+;;protobuf
+(add-to-list 'ac-modes 'protobuf-mode)
