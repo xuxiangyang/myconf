@@ -252,6 +252,7 @@ your recently and most frequently used commands.")
 ;;js tab size 2
 (setq js-indent-level 2)
 
+
 ;;ag
 (defun ag ()
   (interactive)
@@ -309,6 +310,7 @@ your recently and most frequently used commands.")
 (require 'react-snippets)
 (yas-global-mode 1)
 
+
 ;;arduino
 (add-to-list 'ac-modes 'arduino-mode)
 
@@ -328,6 +330,8 @@ your recently and most frequently used commands.")
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
+
+
 
 ;;ace-jump
 (require 'ace-jump-mode)
@@ -359,11 +363,6 @@ your recently and most frequently used commands.")
 
 (ad-activate 'paredit-mode)
 
-;;(require 'evil)
-;;(evil-mode 1)
-;;(setq evil-motion-state-modes (append evil-emacs-state-modes evil-motion-state-modes))
-;;(setq evil-emacs-state-modes nil)
-
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 
@@ -374,13 +373,15 @@ your recently and most frequently used commands.")
 
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . tomal-mode))
 
+
 ;;thrift
 (add-to-list 'ac-modes 'thrift-mode)
 
 ;;python
-(require 'py-autopep8)
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-(elpy-enable)
+;; (require 'py-autopep8)
+;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+;; (elpy-enable)
+
 
 ;;protobuf
 (add-to-list 'ac-modes 'protobuf-mode)
