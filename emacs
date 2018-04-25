@@ -117,7 +117,6 @@ your recently and most frequently used commands.")
 
 ;;golang
 (require 'go-mode)
-(require 'go-mode-autoloads)
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook
           (lambda ()
