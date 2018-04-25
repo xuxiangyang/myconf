@@ -141,12 +141,11 @@ your recently and most frequently used commands.")
 (show-smartparens-global-mode t)
 
 ;; org mode增加状态
-;; (setq org-todo-keywords
-;;       '((sequence "TODO" "|" "DONE" "ABANDON")))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)" "ABORT(a)")))
 (setq org-startup-indented t)
 (setq org-log-done 'time)
 (setq org-src-fontify-natively t)
-
 
 ;; Add by emacs
 (custom-set-variables
@@ -160,7 +159,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (py-autopep8 yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails erlang enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (jsx-mode py-autopep8 yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails erlang enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -297,18 +296,21 @@ your recently and most frequently used commands.")
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-auto-closing t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.wxss\\'" . css-mode))
+(setq web-mode-content-types-alist
+      '(("jsx" . "\\.js[x]?\\'")))
 
 (add-hook 'web-mode-hook
           (lambda ()
             (setq web-mode-html-offset   2)
             (setq web-mode-markup-indent-offset 2)
-            (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
+            (setq web-mode-attr-indent-offset 2)
             ))
+
 (require 'yasnippet)
 (require 'react-snippets)
 (yas-global-mode 1)
@@ -388,3 +390,5 @@ your recently and most frequently used commands.")
 
 ;;protobuf
 (add-to-list 'ac-modes 'protobuf-mode)
+
+;;magit
