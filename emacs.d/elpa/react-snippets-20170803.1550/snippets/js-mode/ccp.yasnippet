@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: React.createPage
+# key: ccp
+# --
+
+require("./index.css");
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+function mapStateToProps(state) {
+  return {
+    $2
+  };
+}
+
+class $1 extends Component {
+  render() {
+    return(
+      <div className="page $1">
+        $0
+      </div>
+    )
+  }
+}
+
+$1.propTypes = { $3 };
+
+export default connect(mapStateToProps)($1);
