@@ -14,6 +14,10 @@
 (require 'linum)
 (global-linum-mode t)
 
+;; flycheck
+(require 'flycheck)
+(global-flycheck-mode)
+
 ;;tab
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2 c-basic-offset 2)
@@ -72,9 +76,9 @@ your recently and most frequently used commands.")
 (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . enh-ruby-mode))
 (setq enh-ruby-add-encoding-comment-on-save nil)
 (setq enh-ruby-deep-indent-paren nil)
+
 ;; rails 项目管理
-(projectile-global-mode)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(projectile-rails-global-mode)
 
 ;; 去除临时文件
 (setq make-backup-files nil)
@@ -158,7 +162,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (yasnippet-snippets jsx-mode py-autopep8 yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails erlang enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails erlang enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -350,10 +354,7 @@ your recently and most frequently used commands.")
 (add-to-list 'ac-modes 'erlang-mode)
 
 (require 'autopair)
-
-(defvar autopair-modes '(erlang-mode enh-ruby-mode go-mode python-mode web-mode elixir-mode))
-(defun turn-on-autopair-mode () (autopair-mode 1))
-(dolist (mode autopair-modes) (add-hook (intern (concat (symbol-name mode) "-hook")) 'turn-on-autopair-mode))
+(autopair-global-mode 1)
 
 ;;自动括号
 (require 'paredit)

@@ -5,7 +5,7 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git bundler osx rake ruby docker web-search catimg wd golang copydir mix-fast elixir bd python)
+plugins=(wd bd copydir dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -16,7 +16,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/depot_tools:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
-export FIREFOX_BIN=~/Applications/Firefox.app/Contents/MacOS/firefox-bin
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -44,7 +43,7 @@ export PATH=/usr/local/go/bin:$PATH
 
 export BUNDLER_EDITOR=subl
 #[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
-source ~/.nvm/nvm.sh
+#source ~/.nvm/nvm.sh
 
 #npm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -56,16 +55,7 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 #python
 export PATH=/usr/local/anaconda2/bin:$PATH
 
-setopt ignoreeof
-
-if [ -f ~/.lenvrc ]; then
-  source ~/.lenvrc
-fi
-
 alias pi='pod install --no-repo-update'
-unsetopt ignoreeof
-
-alias octave=octave-cli
 
 #open_resty
 PATH=/usr/local/openresty/nginx/sbin:$PATH
@@ -74,64 +64,12 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #mix aotuocomplete
-source ~/.mix_autocomplete.zsh
-source /usr/local/anaconda2/bin/aliyun_zsh_complete.sh
+#source ~/.mix_autocomplete.zsh
+#source /usr/local/anaconda2/bin/aliyun_zsh_complete.sh
 
-source activate py3 
-echo 'export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"' >> ~/.zshrc
+#source activate py3
 export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
-export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"
+
+ulimit -c unlimited
+export PATH="/Users/xxy/Documents/scala_project/preditionio/PredictionIO-0.12.1/bin:$PATH"
