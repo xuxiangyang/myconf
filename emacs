@@ -1,6 +1,6 @@
 ;; package --- smarry
 ;;; Commentary:
-;; package 包管理
+;;; package 包管理
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("tromey" . "http://tromey.com/elpa/")
@@ -139,10 +139,6 @@ your recently and most frequently used commands.")
 (global-set-key (kbd "M-p") 'mc/mark-previous-like-this)
 (global-set-key (kbd "M-n") 'mc/mark-next-like-this)
 
-;; smartparens
-(require 'smartparens-config)
-(show-smartparens-global-mode t)
-
 ;; org mode增加状态
 (setq org-todo-keywords
       '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d)" "ABORT(a)")))
@@ -162,7 +158,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails erlang enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -263,37 +259,6 @@ your recently and most frequently used commands.")
   (interactive)
   (helm-ag (projectile-project-root)))
 
-;; multi-term
-(require 'multi-term)
-(setq multi-term-program "/bin/zsh")
-
-(add-hook 'term-mode-hook
-          (lambda ()
-            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
-
-(add-hook 'term-mode-hook
-          (lambda ()
-            (setq term-buffer-maximum-size 0)))
-(add-hook 'term-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)
-            (autopair-mode -1)))
-(defun last-term-buffer (l)
-  "Return most recently used term buffer."
-  (when l
-    (if (eq 'term-mode (with-current-buffer (car l) major-mode))
-        (car l) (last-term-buffer (cdr l)))))
-(defun get-term ()
-  "Switch to the term buffer last used, or create a new one if
-    none exists, or if the current buffer is already a term."
-  (interactive)
-  (let ((b (last-term-buffer (buffer-list))))
-    (if (or (not b) (eq 'term-mode major-mode))
-        (multi-term)
-      (switch-to-buffer b))))
-(global-set-key (kbd "\C-x\C-a") 'get-term)
-
 ;;web-mode
 (require 'web-mode)
 (setq web-mode-enable-auto-pairing t)
@@ -356,17 +321,23 @@ your recently and most frequently used commands.")
 (require 'autopair)
 (autopair-global-mode 1)
 
-;;自动括号
-(require 'paredit)
-(defadvice paredit-mode (around disable-autopairs-around (arg))
-  "Disable autopairs mode if paredit-mode is turned on"
-  ad-do-it
-  (if (null ad-return-value)
-      (autopair-mode 1)
-    (autopair-mode 0)
-    ))
+;; ;;自动括号
+;; (require 'paredit)
+;; (defadvice paredit-mode (around disable-autopairs-around (arg))
+;;   "Disable autopairs mode if paredit-mode is turned on"
+;;   ad-do-it
+;;   (if (null ad-return-value)
+;;       (autopair-mode 1)
+;;     (autopair-mode 0)
+;;     ))
 
-(ad-activate 'paredit-mode)
+;; ;; (ad-activate 'paredit-mode)
+;; (add-hook 'enh-ruby-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'web-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'go-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'python-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'scala-mode-hook             #'enable-paredit-mode)
+
 
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
@@ -387,8 +358,15 @@ your recently and most frequently used commands.")
 ;; (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 ;; (elpy-enable)
 
+(remove-hook 'python-mode 'flycheck-mode)
 
 ;;protobuf
 (add-to-list 'ac-modes 'protobuf-mode)
 
-;;magit
+;;scala
+;; (require 'ensime)
+;; (setq ensime-startup-notification nil)
+;; (add-hook 'scala-mode-hook #'ensime)
+
+;;projectile
+(projectile-mode +1)
