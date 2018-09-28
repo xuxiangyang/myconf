@@ -78,4 +78,3 @@ export PATH="/Users/xxy/Documents/scala_project/preditionio/PredictionIO-0.12.1/
 #export http_proxy=http://127.0.0.1:1087
 #export https_proxy=http://127.0.0.1:1087
 export PATH="/Users/xxy/Library/Android/sdk/platform-tools:$PATH"
-export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
