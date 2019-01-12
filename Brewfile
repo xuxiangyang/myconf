@@ -98,8 +98,6 @@ brew "opencc"
 brew "openssl@1.1"
 brew "plantuml"
 brew "postgresql", restart_service: true
-brew "postgresql@10"
-brew "postgresql@9.5"
 brew "protobuf"
 brew "proxychains-ng"
 brew "pwgen"
