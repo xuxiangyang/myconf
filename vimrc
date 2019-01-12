@@ -10,9 +10,13 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=4
 set smarttab
+set smartindent
 set expandtab
 set number
-set relativenumber
+set hlsearch
+set smartcase
+set laststatus=2
+set spell spelllang=en_us
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -23,4 +27,3 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'user/L9', {'name': 'newL9'}
 call vundle#end()            " required
 filetype plugin indent on    " required
-
