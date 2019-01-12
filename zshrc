@@ -53,7 +53,7 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 
 
 #python
-export PATH=/usr/local/anaconda2/bin:$PATH
+export PATH=/usr/local/anaconda3/bin:$PATH
 
 alias pi='pod install --no-repo-update'
 
@@ -65,7 +65,7 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 
 #mix aotuocomplete
 #source ~/.mix_autocomplete.zsh
-#source /usr/local/anaconda2/bin/aliyun_zsh_complete.sh
+#source /usr/local/anaconda3/bin/aliyun_zsh_complete.sh
 
 #source activate py3
 export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
@@ -78,3 +78,7 @@ export PATH="/Users/xxy/Documents/scala_project/preditionio/PredictionIO-0.12.1/
 #export http_proxy=http://127.0.0.1:1087
 #export https_proxy=http://127.0.0.1:1087
 export PATH="/Users/xxy/Library/Android/sdk/platform-tools:$PATH"
+alias wxcli="/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli"
+
+# export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
+source $HOME/.cargo/env
