@@ -387,9 +387,9 @@ your recently and most frequently used commands.")
 (global-set-key (kbd "C-c u") 'clang-format-buffer)
 (setq clang-format-style-option "llvm")
 (add-hook 'c-mode-common-hook
-          (function (lambda ()
-                      (add-hook 'before-save-hook
-                                'clang-format-buffer))))
+         (function (lambda ()
+                     (add-hook (make-local-variable 'before-save-hook)
+                               'clang-format-buffer))))
 
 (provide 'emacs)
 ;;; emacs ends here
