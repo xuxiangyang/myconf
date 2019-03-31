@@ -4,19 +4,16 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
 set tabstop=2
 set shiftwidth=2
 set softtabstop=4
 set smarttab
 set smartindent
-set expandtab
-set number
 set hlsearch
+set expandtab
 set smartcase
 set laststatus=2
-set spell spelllang=en_us
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
