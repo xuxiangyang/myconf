@@ -13,7 +13,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=/usr/local/depot_tools:$PATH
+export PATH=/usr/local/jadx/bin/:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 
@@ -82,3 +82,26 @@ alias wxcli="/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/c
 
 # export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
 source $HOME/.cargo/env
+export PATH="/usr/local/opt/opencv@2/bin:$PATH"
+
+# flutter
+export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/flutter"
+export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
