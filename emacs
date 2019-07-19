@@ -156,7 +156,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (sass-mode flycheck-golangci-lint go-snippets fzf auto-complete-clang rtags cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake-cursor flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -240,6 +240,8 @@ your recently and most frequently used commands.")
 ;;错误处理
 (require 'flymake-easy)
 (flymake-mode t)
+;; ;; disable Warning (flymake): Disabling backend flymake-proc-legacy-flymake because (error Can’t find a suitable init function)
+;; (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 (require 'flymake-ruby)
 (add-hook 'enh-ruby-mode-hook 'flymake-ruby-load)
 (eval-after-load "go-mode" '(require 'flymake-go))
@@ -386,11 +388,14 @@ your recently and most frequently used commands.")
          (function (lambda ()
                      (add-hook (make-local-variable 'before-save-hook)
                                'clang-format-buffer))))
-
 (add-hook 'c-mode-common-hook
           (function (lambda ()
                       (c-toggle-auto-newline 1)
-                     )))
+                      )))
+;; (require 'rtags)
+;; (cmake-ide-setup)
+
+(global-set-key (kbd "C-x p") 'fzf)
 
 (provide 'emacs)
 ;;; emacs ends here

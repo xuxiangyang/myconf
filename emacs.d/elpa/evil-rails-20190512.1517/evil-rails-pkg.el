@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "evil-rails" "20190512.1517" "Rails support for Evil Mode" '((evil "1.0") (projectile-rails "1.0")) :commit "b0f1c5de6720714febeb76c4b569b71bb891938c" :keywords '("ruby" "rails" "vim" "project" "convenience" "web" "evil" "projectile") :authors '(("Antono Vasiljev" . "antono.vasiljev@gmail.com")) :maintainer '("Antono Vasiljev" . "antono.vasiljev@gmail.com") :url "https://github.com/antono/evil-rails")

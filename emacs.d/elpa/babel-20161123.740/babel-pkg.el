@@ -1,2 +1,0 @@
-;;; -*- no-byte-compile: t -*-
-(define-package "babel" "20161123.740" "interface to web translation services such as Babelfish" 'nil :commit "d4212e25fcbd22b8e38be13936f937a2963d34a9" :keywords '("translation" "web") :authors '(("Juergen Hoetzel" . "juergen@hoetzel.info") ("Eric Marsden" . "emarsden@laas.fr")) :maintainer '("Juergen Hoetzel" . "juergen@hoetzel.info") :url "http://github.com/juergenhoetzel/babel")

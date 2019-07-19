@@ -1,2 +1,0 @@
-;;; -*- no-byte-compile: t -*-
-(define-package "go-projectile" "20180808.1822" "Go add-ons for Projectile" '((projectile "0.10.0") (go-mode "0") (go-eldoc "0.16") (go-rename "0") (go-guru "0")) :commit "11989b104a4bef406bf0e7b31ef6608aa6057cf7" :keywords '("project" "convenience") :authors '(("Doug MacEachern" . "dougm@vmware.com")) :maintainer '("Doug MacEachern" . "dougm@vmware.com") :url "https://github.com/dougm/go-projectile")
