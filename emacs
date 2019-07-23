@@ -10,6 +10,9 @@
 (require 'linum)
 (global-linum-mode t)
 
+(global-display-line-numbers-mode)
+(setq-default display-line-numbers-type 'relative)
+
 ;; flycheck
 (require 'flycheck)
 (global-flycheck-mode)
@@ -17,6 +20,7 @@
 ;;tab
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2 c-basic-offset 2)
+(setq evil-shift-width 2)
 (setq-default tab-width 2)
 
 ;; 括号匹配
@@ -124,6 +128,7 @@ your recently and most frequently used commands.")
           (lambda ()
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq tab-width 4)
+            (setq evil-shift-width 4)
             (setq indent-tabs-mode 1)))
 (setq gofmt-show-errors nil)
 (add-to-list 'ac-modes 'go-mode)
@@ -156,7 +161,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (use-package sass-mode flycheck-golangci-lint go-snippets fzf auto-complete-clang rtags cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (evil-mc use-package sass-mode flycheck-golangci-lint go-snippets fzf auto-complete-clang rtags cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -398,6 +403,15 @@ your recently and most frequently used commands.")
 ;; (cmake-ide-setup)
 
 (global-set-key (kbd "C-x p") 'fzf)
+
+;; evil
+(require 'evil)
+(evil-mode 1)
+(with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+(require 'evil-mc)
+(global-evil-mc-mode 1)
+(define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
 
 (provide 'emacs)
 ;;; emacs ends here
