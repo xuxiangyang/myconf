@@ -2,8 +2,10 @@
 ;;; Commentary:
 ;;; package 包管理
 (require 'package)
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq package-archives '(
+                         ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                        ))
 (package-initialize)
 
 ;; 显示行号
@@ -58,15 +60,15 @@ your recently and most frequently used commands.")
 (put 'upcase-region 'disabled nil)
 
 ;; 补全
-(require 'auto-complete-config)
-(ac-config-default)
-(ac-set-trigger-key nil)
-(setq ac-auto-start t)
-(define-key ac-complete-mode-map "\t" nil)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (ac-set-trigger-key nil)
+;; (setq ac-auto-start t)
+;; (define-key ac-complete-mode-map "\t" nil)
 
 ;;ruby
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
-(add-to-list 'ac-modes 'enh-ruby-mode)
+;; (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'auto-mode-alist
              '("\\.\\(?:gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|god\\|ru\\|jbuilder\\|thor\\|cap\\)\\'" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
@@ -131,7 +133,7 @@ your recently and most frequently used commands.")
             (setq evil-shift-width 4)
             (setq indent-tabs-mode 1)))
 (setq gofmt-show-errors nil)
-(add-to-list 'ac-modes 'go-mode)
+;; (add-to-list 'ac-modes 'go-mode)
 
 ;;主题
 (load-theme 'monokai t)
@@ -161,7 +163,7 @@ your recently and most frequently used commands.")
  '(enh-ruby-check-syntax nil)
  '(package-selected-packages
    (quote
-    (evil-mc use-package sass-mode flycheck-golangci-lint go-snippets fzf auto-complete-clang rtags cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
+    (company-tabnine evil-mc use-package sass-mode flycheck-golangci-lint go-snippets fzf auto-complete-clang rtags cmake-ide clang-format cargo flymake-rust flycheck-rust rust-mode flycheck-plantuml plantuml-mode pg ensime scala-mode flycheck go-projectile yasnippet-snippets jsx-mode yaml-mode xpm xclip writeroom-mode window-numbering web-mode tree-mode toml-mode toml thrift sr-speedbar sql-indent smex smartparens smart-tab scss-mode rvm ruby-end ruby-electric ruby-compilation ruby-block react-snippets rails-log-mode python-mode protobuf-mode project paredit org nginx-mode neotree multiple-cursors multi-term monokai-theme markdown-toc magit lua-mode logstash-conf ldap-mode json-snatcher json-reformat js2-mode ido-sort-mtime ido-complete-space-or-hyphen ido-better-flex helm-anything helm-ag haml-mode guess-style guess-offset goto-gem go-mode go-autocomplete go git-blame git flymake-ruby flymake-python-pyflakes flymake-go flymake-elixir flymake evil-rails enh-ruby-mode elpy elixir-yasnippets elixir-mode elixir-mix dockerfile-mode coffee-mode cmake-mode babel autopair ascii-art-to-unicode arduino-mode angularjs-mode ace-jump-mode)))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -292,7 +294,7 @@ your recently and most frequently used commands.")
 
 
 ;;arduino
-(add-to-list 'ac-modes 'arduino-mode)
+;; (add-to-list 'ac-modes 'arduino-mode)
 
 
 ;;rename current file
@@ -323,7 +325,7 @@ your recently and most frequently used commands.")
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 ;;erlang
-(add-to-list 'ac-modes 'erlang-mode)
+;; (add-to-list 'ac-modes 'erlang-mode)
 
 (require 'autopair)
 (autopair-global-mode 1)
@@ -352,13 +354,13 @@ your recently and most frequently used commands.")
 ;;elixir
 (require 'flymake-elixir)
 (add-hook 'elixir-mode-hook 'flymake-elixir-load)
-(add-to-list 'ac-modes 'elixir-mode)
+;; (add-to-list 'ac-modes 'elixir-mode)
 
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . tomal-mode))
 
 
 ;;thrift
-(add-to-list 'ac-modes 'thrift-mode)
+;; (add-to-list 'ac-modes 'thrift-mode)
 
 ;;python
 ;; (require 'py-autopep8)
@@ -368,7 +370,7 @@ your recently and most frequently used commands.")
 (remove-hook 'python-mode 'flycheck-mode)
 
 ;;protobuf
-(add-to-list 'ac-modes 'protobuf-mode)
+;; (add-to-list 'ac-modes 'protobuf-mode)
 
 ;;scala
 ;; (require 'ensime)
@@ -384,7 +386,7 @@ your recently and most frequently used commands.")
 ;;rust
 (with-eval-after-load 'rust-mode
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-(add-to-list 'ac-modes 'rust-mode)
+;; (add-to-list 'ac-modes 'rust-mode)
 (setq rust-format-on-save t)
 
 ;;clang
@@ -412,6 +414,19 @@ your recently and most frequently used commands.")
 (require 'evil-mc)
 (global-evil-mc-mode 1)
 (define-key evil-normal-state-map (kbd "TAB") 'indent-for-tab-command)
+
+;; tabnine https://zhuanlan.zhihu.com/p/73811872
+;; 基于深度学习的更强大的补全机制
+(add-hook 'after-init-hook 'global-company-mode)
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+(setq company-idle-delay 0)
+(setq company-show-numbers t)
+(company-tng-configure-default)
+(setq company-frontends
+      '(company-tng-frontend
+        company-pseudo-tooltip-frontend
+        company-echo-metadata-frontend))
 
 (provide 'emacs)
 ;;; emacs ends here
