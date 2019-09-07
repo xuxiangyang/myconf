@@ -332,24 +332,6 @@ your recently and most frequently used commands.")
 (require 'autopair)
 (autopair-global-mode 1)
 
-;; ;;自动括号
-;; (require 'paredit)
-;; (defadvice paredit-mode (around disable-autopairs-around (arg))
-;;   "Disable autopairs mode if paredit-mode is turned on"
-;;   ad-do-it
-;;   (if (null ad-return-value)
-;;       (autopair-mode 1)
-;;     (autopair-mode 0)
-;;     ))
-;;
-;; ;; (ad-activate 'paredit-mode)
-;; (add-hook 'enh-ruby-mode-hook             #'enable-paredit-mode)
-;; (add-hook 'web-mode-hook             #'enable-paredit-mode)
-;; (add-hook 'go-mode-hook             #'enable-paredit-mode)
-;; (add-hook 'python-mode-hook             #'enable-paredit-mode)
-;; (add-hook 'scala-mode-hook             #'enable-paredit-mode)
-
-
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
 
@@ -375,11 +357,6 @@ your recently and most frequently used commands.")
 
 ;;protobuf
 (add-to-list 'ac-modes 'protobuf-mode)
-
-;;scala
-;; (require 'ensime)
-;; (setq ensime-startup-notification nil)
-;; (add-hook 'scala-mode-hook #'ensime)
 
 ;;projectile
 (projectile-mode +1)
