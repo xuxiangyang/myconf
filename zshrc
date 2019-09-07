@@ -5,8 +5,8 @@ SABLE_AUTO_TITLE="true"
 CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(wd bd copydir dotenv)
 
+plugins=(wd copydir dotenv vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -16,6 +16,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/jadx/bin/:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
+export KEYTIMEOUT=1
+export EDITOR=vim
+export VISUAL=vim
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -28,8 +31,8 @@ alias gck="git checkout"
 alias gci="git commit"
 alias gb=$GOPATH/bin/gb
 
-#emacs 键位设定
-bindkey -e
+# emacs 键位设定
+# bindkey -e
 
 #rake bug
 alias rake='noglob rake'
@@ -104,4 +107,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
