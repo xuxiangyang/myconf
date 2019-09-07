@@ -114,20 +114,6 @@ your recently and most frequently used commands.")
 (require 'react-snippets)
 (yas-global-mode 1)
 
-;; 同步系统剪贴板
-(setq x-select-enable-clipboard t)
-(defun copy-from-osx ()
-  (shell-command-to-string "pbpaste"))
-
-(defun paste-to-osx (text &optional push)
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
-
-(setq interprogram-cut-function 'paste-to-osx)
-(setq interprogram-paste-function 'copy-from-osx)
-
 ;;golang
 (require 'go-mode)
 (setq gofmt-command "goimports")
@@ -422,6 +408,9 @@ your recently and most frequently used commands.")
 ;; https://github.com/Dewdrops/evil-exchange
 (require 'evil-exchange)
 (evil-exchange-install)
+
+;; 粘贴到系统剪切版
+(xclip-mode 1)
 
 (provide 'emacs)
 ;;; emacs ends here
