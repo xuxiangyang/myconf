@@ -30,6 +30,7 @@ alias tailf='tail -f'
 alias gck="git checkout"
 alias gci="git commit"
 alias gb=$GOPATH/bin/gb
+alias ctags="`brew --prefix`/bin/ctags"
 
 # emacs 键位设定
 # bindkey -e
