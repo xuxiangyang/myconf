@@ -67,10 +67,6 @@ PATH=/usr/local/openresty/nginx/sbin:$PATH
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-#mix aotuocomplete
-#source ~/.mix_autocomplete.zsh
-#source /usr/local/anaconda3/bin/aliyun_zsh_complete.sh
-
 #source activate py3
 export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"
@@ -93,18 +89,3 @@ export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/f
 export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
