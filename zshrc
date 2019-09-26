@@ -6,7 +6,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(wd copydir dotenv vi-mode)
+plugins=(wd copydir dotenv)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -33,7 +33,7 @@ alias gb=$GOPATH/bin/gb
 alias ctags="`brew --prefix`/bin/ctags"
 
 # emacs 键位设定
-# bindkey -e
+bindkey -e
 
 #rake bug
 alias rake='noglob rake'
