@@ -9,8 +9,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(wd copydir dotenv)
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/jadx/bin/:$PATH
@@ -40,14 +38,12 @@ alias rake='noglob rake'
 
 export TERM=xterm-256color
 
-#Gopath, use gopm to mannge multi projects
+# Go
 export GOPATH=$HOME/Documents/go_project
 export PATH=$GOPATH/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 
 export BUNDLER_EDITOR=subl
-#[[ -s "/Users/xxy/.gvm/scripts/gvm" ]] && source "/Users/xxy/.gvm/scripts/gvm"
-#source ~/.nvm/nvm.sh
 
 #npm
 alias cnpm="npm --registry=https://registry.npm.taobao.org \
@@ -72,20 +68,17 @@ export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home"
 
 ulimit -c unlimited
-export PATH="/Users/xxy/Documents/scala_project/preditionio/PredictionIO-0.12.1/bin:$PATH"
 
 # shadowsocks
-#export http_proxy=http://127.0.0.1:1087
-#export https_proxy=http://127.0.0.1:1087
 export PATH="/Users/xxy/Library/Android/sdk/platform-tools:$PATH"
 alias wxcli="/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli"
 
-# export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
+# rust
 source $HOME/.cargo/env
+
+# opencv
 export PATH="/usr/local/opt/opencv@2/bin:$PATH"
 
 # flutter
 export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/flutter"
 export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
