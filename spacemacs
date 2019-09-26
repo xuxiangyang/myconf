@@ -45,6 +45,7 @@ values."
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
+                      auto-completion-idle-delay 0
                       )
      better-defaults
      emacs-lisp
