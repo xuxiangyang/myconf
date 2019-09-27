@@ -50,6 +50,7 @@ values."
      better-defaults
      emacs-lisp
      markdown
+     dash
      (org :variables
           org-enable-github-support t
           org-projectile-file "todo.org"
