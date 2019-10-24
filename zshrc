@@ -10,10 +10,8 @@ plugins=(wd copydir dotenv)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/jadx/bin/:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
 export KEYTIMEOUT=1
 export EDITOR=vim
 export VISUAL=vim
@@ -75,6 +73,8 @@ alias wxcli="/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/c
 
 # rust
 source $HOME/.cargo/env
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 
 # opencv
 export PATH="/usr/local/opt/opencv@2/bin:$PATH"
@@ -82,3 +82,6 @@ export PATH="/usr/local/opt/opencv@2/bin:$PATH"
 # flutter
 export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/flutter"
 export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
+
+# AutoJump https://github.com/wting/autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
