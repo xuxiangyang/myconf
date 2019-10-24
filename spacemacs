@@ -30,9 +30,11 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(html
+     (rust :variables
+           rust-format-on-save t
+           )
      yaml
-     html
      nginx
      helm
      smex
@@ -53,7 +55,7 @@ values."
      dash
      (org :variables
           org-enable-github-support t
-          org-projectile-file "todo.org"
+          org-projectile-file "TODO.org"
           )
      syntax-checking
      git
@@ -363,25 +365,6 @@ you should place your code here."
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
 
-  ;; Ido配置，默认不用helm, helm竖屏显示太打扰了
-  (helm-mode 0)
-  (ido-vertical-mode 0)
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-  (global-set-key (kbd "C-x C-f") 'ido-find-file)
-  (global-set-key (kbd "C-x b") 'ido-switch-buffer)
-  (spacemacs/set-leader-keys
-    "bb"   'ido-switch-buffer
-    "ff"   'ido-find-file
-    )
-
-  ;; vim可见行数的上下移动
-  ;; (define-key evil-motion-state-map "j" 'evil-next-visual-line)
-  ;; (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
-  ;; (define-key evil-visual-state-map "j" 'evil-next-visual-line)
-  ;; (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
-
   ;; 搜索不要高亮
   (setq-default evil-ex-search-highlight-all nil)
 
@@ -434,10 +417,10 @@ This function is called at the very end of Spacemacs initialization."
  '(avy-timeout-seconds 0.01)
  '(org-agenda-files
    (quote
-    ("~/Documents/rails_project/square_admin/todo.org" "~/Documents/rails_project/square_rpc/todo.org" "~/Documents/LifeRecord/myconf/todo.org" "~/Documents/rails_project/keep_alive/todo.org" "~/Documents/op/cloud-init/todo.org" "~/Documents/rails_project/inke_accompany_search/todo.org" "~/Documents/rails_project/multi_push/todo.org" "~/Documents/rails_project/square_api/todo.org" "~/Documents/web_project/square_html5/todo.org" "~/Documents/go_project/src/square/todo.org" "~/Documents/rails_project/api_doc/todo.org" "~/Documents/rails_project/skynet/todo.org" "~/Documents/rails_project/square_web/todo.org" "~/Documents/rails_project/square_stats/todo.org" "~/Documents/rails_project/dev_assistant/todo.org")))
+    ("~/Documents/rails_project/square_rpc/todo.org" "~/Documents/rails_project/square_rpc/TODO.org" "~/Documents/web_project/square_html5/TODO.org" "~/Documents/go_project/src/square/TODO.org" "~/Documents/rails_project/api_doc/TODO.org" "~/Documents/rails_project/square_stats/TODO.org" "~/Documents/rails_project/operation_rpc/TODO.org" "~/Documents/LifeRecord/org/TODO.org" "~/Documents/rails_project/square_tracker/TODO.org")))
  '(package-selected-packages
    (quote
-    (markdown-preview-mode yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (rust-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
