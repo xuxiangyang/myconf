@@ -320,6 +320,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
           ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
+
+  ;; end of user-init
   )
 
 (defun dotspacemacs/user-config ()
@@ -372,6 +374,8 @@ you should place your code here."
 
   ;; 禁止分window后自动resize
   (setq window-combination-resize nil)
+
+  ;; ivy 更好用的跳转
   (use-package ivy
     :defer t
     :after flx
@@ -390,6 +394,16 @@ you should place your code here."
           ("TAB" . counsel-down-directory)))
 
 
+  ;; smartparens 如果是在某个词前，禁止自动补全
+  (eval-after-load 'smartparens
+    '(progn
+       (sp-pair "\"" nil :unless '(sp-point-before-word-p))
+       (sp-pair "'" nil :unless '(sp-point-before-word-p))
+       (sp-pair "(" nil :unless '(sp-point-before-word-p))
+       (sp-pair "[" nil :unless '(sp-point-before-word-p))
+       (sp-pair "{" nil :unless '(sp-point-before-word-p))
+       )
+    )
   ;; end of user-config
   )
 
