@@ -42,10 +42,27 @@ values."
      smex
      react
      neotree
-     go
+     (lsp :variables
+          lsp-auto-guess-root t
+          lsp-enable-semantic-highlighting t
+          lsp-ui-remap-xref-keybindings t
+          lsp-ui-sideline-show-symbol t
+          lsp-prefer-flymake t
+          )
+     (go :variables
+         godoc-at-point-function 'godoc-gogetdoc
+         company-go-gocode-args '(-unimported-packages)
+         gofmt-command "goimports"
+         go-format-before-save t
+         go-tab-width 4
+         go-backend 'lsp
+         )
      (ruby :variables
            ruby-enable-enh-ruby-mode t
+           ruby-test-runner 'rspec
+           ruby-version-manager 'rvm
            )
+
      ruby-on-rails
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
@@ -338,9 +355,6 @@ you should place your code here."
   ;; 粘贴到系统剪切版
   (xclip-mode 1)
 
-  ;; Golang相关配置
-  (setq gofmt-command "goimports")
-
   ;; 自动跟踪链接
   (setq vc-follow-symlinks t)
 
@@ -365,6 +379,9 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
+  ;; Ruby相关配置
+  (rvm-use-default)
 
   ;; 搜索不要高亮
   (setq-default evil-ex-search-highlight-all nil)
