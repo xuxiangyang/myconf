@@ -36,9 +36,10 @@ values."
            )
      yaml
      nginx
-     (ivy :variables
-          ivy-enable-advanced-buffer-information t
-          )
+     (helm :variables
+           helm-enable-auto-resize t
+           helm-no-header t
+           )
      smex
      react
      neotree
@@ -48,6 +49,7 @@ values."
           lsp-ui-remap-xref-keybindings t
           lsp-ui-sideline-show-symbol t
           lsp-prefer-flymake t
+          lsp-enable-snippet t
           )
      (go :variables
          godoc-at-point-function 'godoc-gogetdoc
@@ -84,6 +86,7 @@ values."
    dotspacemacs-additional-packages '(
                                       xclip
                                       thrift
+                                      reveal-in-osx-finder
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '(
@@ -350,7 +353,17 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;; 超长Line换行问题
-  (spacemacs/toggle-visual-line-navigation-globally-on)
+  ;; (spacemacs/toggle-visual-line-navigation-globally-on)
+
+  ;; Helm配置
+  (with-eval-after-load 'helm
+    (define-key helm-find-files-map (kbd "/") 'helm-ff-TAB)
+    )
+  ;; Dired配置
+  (require 'dired-x)
+  (with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+    )
 
   ;; 禁用鼠标
   (xterm-mouse-mode -1)
@@ -391,28 +404,10 @@ you should place your code here."
 
   ;; 全局开启补全
   (global-company-mode)
+  (setq company-minimum-prefix-length 1)
 
   ;; 禁止分window后自动resize
   (setq window-combination-resize nil)
-
-  ;; ivy 更好用的跳转
-  (use-package ivy
-    :defer t
-    :after flx
-    :custom
-    (ivy-extra-directories nil "Remove `.' and `..' from directory lists.")
-    (ivy-initial-inputs-alist nil "Remove the initial `^' in searches.")
-    (ivy-re-builders-alist
-     '((counsel-find-file . ivy--regex-fuzzy)
-       (read-file-name-internal . ivy--regex-fuzzy)
-       (ivy-switch-buffer . ivy--regex-fuzzy)
-       (t . spacemacs/ivy--regex-plus)))
-
-    :bind (:map ivy-minibuffer-map
-                ("RET" . ivy-alt-done))
-    (:map counsel-find-file-map
-          ("TAB" . counsel-down-directory)))
-
 
   ;; smartparens 如果是在某个词前，禁止自动补全
   (eval-after-load 'smartparens
@@ -448,19 +443,19 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(avy-timeout-seconds 0.01)
-   '(package-selected-packages
-     (quote
-      (rust-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(avy-timeout-seconds 0.01)
+ '(package-selected-packages
+   (quote
+    (reveal-in-osx-finder rust-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
