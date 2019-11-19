@@ -6,7 +6,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(wd copydir dotenv)
+plugins=(wd git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -26,7 +26,7 @@ alias tailf='tail -f'
 alias gck="git checkout"
 alias gci="git commit"
 alias gb=$GOPATH/bin/gb
-alias ctags="`brew --prefix`/bin/ctags"
+alias ctags="/usr/local/bin/ctags"
 
 # emacs 键位设定
 bindkey -e
@@ -58,7 +58,6 @@ alias pi='pod install --no-repo-update'
 #open_resty
 PATH=/usr/local/openresty/nginx/sbin:$PATH
 
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 #source activate py3
@@ -82,6 +81,3 @@ export PATH="/usr/local/opt/opencv@2/bin:$PATH"
 # flutter
 export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/flutter"
 export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
-
-# AutoJump https://github.com/wting/autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
