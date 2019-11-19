@@ -39,6 +39,7 @@ values."
      (helm :variables
            helm-enable-auto-resize t
            helm-no-header t
+           helm-grep-split-line-regexp "^\\([[:lower:][:upper:]]?:?.*?\\):\\([0-9]+\\)[:-]\\(.*\\)"
            )
      smex
      react
@@ -351,9 +352,6 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;; 超长Line换行问题
-  ;; (spacemacs/toggle-visual-line-navigation-globally-on)
 
   ;; Helm配置
   (with-eval-after-load 'helm
