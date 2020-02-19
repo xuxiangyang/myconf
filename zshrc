@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/jadx/bin/:$PATH
 export PATH=/Users/xxy/.vimpkg/bin:$PATH
+export PATH=/usr/local/opt/inetutils/libexec/gnubin:$PATH
 export KEYTIMEOUT=1
 export EDITOR=vim
 export VISUAL=vim
@@ -53,8 +54,6 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 #python
 export PATH=/usr/local/anaconda3/bin:$PATH
 
-alias pi='pod install --no-repo-update'
-
 #open_resty
 PATH=/usr/local/openresty/nginx/sbin:$PATH
 
@@ -81,3 +80,6 @@ export PATH="/usr/local/opt/opencv@2/bin:$PATH"
 # flutter
 export PATH_TO_FLUTTER_GIT_DIRECTORY="/Users/xxy/Documents/flutter_project/sdk/flutter"
 export PATH="$PATH_TO_FLUTTER_GIT_DIRECTORY/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
