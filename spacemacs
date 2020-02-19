@@ -60,21 +60,12 @@ values."
            )
      smex
      neotree
-     (lsp :variables
-          lsp-auto-guess-root t
-          lsp-enable-semantic-highlighting t
-          lsp-ui-remap-xref-keybindings t
-          lsp-ui-sideline-show-symbol t
-          lsp-prefer-flymake t
-          lsp-enable-snippet t
-          )
      (go :variables
          godoc-at-point-function 'godoc-gogetdoc
          company-go-gocode-args '(-unimported-packages)
          gofmt-command "goimports"
          go-format-before-save t
          go-tab-width 4
-         go-backend 'lsp
          )
      (ruby :variables
            ruby-enable-enh-ruby-mode t
