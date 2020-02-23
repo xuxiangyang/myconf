@@ -428,6 +428,14 @@ you should place your code here."
   ;; Evil 配置
   (define-key evil-insert-state-map (kbd "C-l") 'forward-char)
   (define-key evil-insert-state-map (kbd "C-h") 'backward-char)
+
+  ;; LSP配置
+  (with-eval-after-load 'lsp-mode
+    (dolist (dir '(
+                   "[/\\\\]vendor$"
+                   ))
+      (push dir lsp-file-watch-ignored))
+  )
   ;; end of user-config
   )
 
