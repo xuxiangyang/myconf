@@ -56,6 +56,9 @@ values."
      (helm :variables
            helm-enable-auto-resize t
            helm-no-header t
+           helm-buffer-max-length nil
+           helm-buffers-fuzzy-matching t
+           helm-buffer-details-flag nil
            helm-grep-split-line-regexp "^\\([[:lower:][:upper:]]?:?.*?\\):\\([0-9]+\\)[:-]\\(.*\\)"
            )
      smex
@@ -428,6 +431,16 @@ you should place your code here."
   ;; Evil 配置
   (define-key evil-insert-state-map (kbd "C-l") 'forward-char)
   (define-key evil-insert-state-map (kbd "C-h") 'backward-char)
+  ;; Evil 配置特殊符号为单词一部分
+  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  (add-hook 'css-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'css-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  (add-hook 'web-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'web-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  (add-hook 'enh-ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'haml-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  (add-hook 'haml-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
   ;; LSP配置
   (with-eval-after-load 'lsp-mode
@@ -436,6 +449,7 @@ you should place your code here."
                    ))
       (push dir lsp-file-watch-ignored))
   )
+
   ;; end of user-config
   )
 
