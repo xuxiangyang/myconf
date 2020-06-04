@@ -30,7 +30,12 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(react
+   '(
+     (javascript :variables
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t
+                 )
+     react
      (html :variables
            web-mode-enable-auto-pairing t
            web-mode-enable-auto-closing t
@@ -43,9 +48,6 @@ values."
            web-mode-css-indent-offset 2
            web-mode-code-indent-offset 2
            web-mode-attr-indent-offset 2
-           ;; web-mode-content-types-alist '(
-           ;;                                ("jsx" . "\\.js[x]?\\'")
-           ;;                                )
 
       )
      (rust :variables
@@ -53,6 +55,7 @@ values."
            )
      yaml
      nginx
+     sql
      (helm :variables
            helm-enable-auto-resize t
            helm-no-header t
@@ -73,7 +76,7 @@ values."
           )
      (go :variables
          godoc-at-point-function 'godoc-gogetdoc
-         company-go-gocode-args '(-unimported-packages)
+         ;; company-go-gocode-args '(-unimported-packages)
          gofmt-command "goimports"
          go-format-before-save t
          go-tab-width 4
@@ -97,6 +100,7 @@ values."
      dash
      syntax-checking
      git
+     lua
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -186,7 +190,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 22
+                               :size 24
                                :weight normal
                                :width normal
                                :powerline-scale 1)
@@ -383,10 +387,10 @@ you should place your code here."
 
   ;; 禁用鼠标
   (xterm-mouse-mode -1)
-  (defun nothing())
-  (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'nothing)
-  (dolist (mouse '("<down-mouse-1>" "<mouse-1>"))
-    (global-unset-key (kbd mouse)))
+  ;; (defun nothing())
+  ;; (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'nothing)
+  ;; (dolist (mouse '("<down-mouse-1>" "<mouse-1>"))
+  ;;   (global-unset-key (kbd mouse)))
 
   ;; 粘贴到系统剪切版
   (xclip-mode 1)
@@ -405,7 +409,16 @@ you should place your code here."
   (setq create-lockfiles nil)
 
   ;; Ruby相关配置
-  ;; (rvm-use-default)
+  ;; 重写 https://github.com/senny/rvm.el/blob/master/rvm.el#L398，rvm 配置了BUNDLE_PATH ，会导致emacs下载的gem路径和console中的路径不一致，带来问题
+  (eval-after-load "rvm"
+    '(defun rvm--set-gemhome (gemhome gempath gemset)
+       (if (and gemhome gempath gemset)
+           (progn
+             (setenv "GEM_HOME" gemhome)
+             (setenv "GEM_PATH" gempath)
+             (rvm--change-path 'rvm--current-gem-binary-path (rvm--gem-binary-path-from-gem-path gempath)))
+         (setenv "GEM_HOME" "")
+         (setenv "GEM_PATH" ""))))
 
   ;; 搜索不要高亮
   (setq-default evil-ex-search-highlight-all nil)
@@ -431,16 +444,6 @@ you should place your code here."
   ;; Evil 配置
   (define-key evil-insert-state-map (kbd "C-l") 'forward-char)
   (define-key evil-insert-state-map (kbd "C-h") 'backward-char)
-  ;; Evil 配置特殊符号为单词一部分
-  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
-  (add-hook 'css-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (add-hook 'css-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
-  (add-hook 'web-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (add-hook 'web-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
-  (add-hook 'enh-ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (add-hook 'haml-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-  (add-hook 'haml-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
   ;; LSP配置
   (with-eval-after-load 'lsp-mode
@@ -449,6 +452,13 @@ you should place your code here."
                    ))
       (push dir lsp-file-watch-ignored))
   )
+
+  ;; 处理Search模式无法正常结束 https://github.com/syl20bnr/spacemacs/issues/10410
+  (defun kill-minibuffer-search ()
+    (interactive)
+    (when (windowp (active-minibuffer-window))
+      (evil-ex-search-exit)))
+  (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer-search)
 
   ;; end of user-config
   )
