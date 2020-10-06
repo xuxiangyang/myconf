@@ -36,6 +36,10 @@ values."
                  javascript-fmt-on-save t
                  )
      react
+     (vue :variables
+          )
+     ;; (node :variables node-add-modules-path t)
+     tern
      (html :variables
            web-mode-enable-auto-pairing t
            web-mode-enable-auto-closing t
@@ -459,6 +463,14 @@ you should place your code here."
     (when (windowp (active-minibuffer-window))
       (evil-ex-search-exit)))
   (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer-search)
+
+  ;; 小程序
+  (add-to-list 'auto-mode-alist '("\\.wxml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.wxss\\'" . css-mode))
+  (add-to-list 'auto-mode-alist '("\\.wpy\\'" . vue-mode))
+  (add-hook 'vue-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook #'prettier-js nil t)))
 
   ;; end of user-config
   )
