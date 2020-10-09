@@ -1,0 +1,43 @@
+patch:
+  style/color_scheme: luna
+  style/font_point: 18
+  style/horizontal: true
+  menu/page_size: 5
+  us_keyboard_layout: true
+  ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+    Caps_Lock: noop
+    Shift_L: commit_code
+    Shift_R: noop
+    Control_L: noop
+    Control_R: noop
+  app_options:
+    com.alfredapp.Alfred:
+      ascii_mode: true
+    com.apple.Terminal:
+      ascii_mode: true
+      no_inline: true
+    com.apple.Spotlight:
+      ascii_mode: true
+      no_inline: true
+    com.blacktree.Quicksilver:
+      ascii_mode: true
+    com.googlecode.iterm2:
+      ascii_mode: true
+      no_inline: true
+    "com.runningwithcrayons.Alfred-2":
+      ascii_mode: true
+    org.vim.MacVim:
+      ascii_mode: true
+      no_inline: true
+    com.sublimetext.3:
+      ascii_mode: true
+      no_inline: true
+    com.google.Chrome:
+      ascii_mode: true
+      no_inline: true
+    com.google.Chrome:
+      ascii_mode: true
+      no_inline: true
+    app_options/com.kapeli.dash:
+      ascii_mode: true
