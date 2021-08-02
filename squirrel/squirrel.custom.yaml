@@ -4,8 +4,9 @@ patch:
   style/horizontal: true
   us_keyboard_layout: true
   app_options:
-    com.alfredapp.Alfred:
+    com.kapeli.dashdoc:
       ascii_mode: true
+      no_inline: true
     com.apple.Terminal:
       ascii_mode: true
       no_inline: true
@@ -26,8 +27,6 @@ patch:
     com.google.Chrome:
       ascii_mode: true
       no_inline: true
-    com.google.Chrome:
+    com.youdao.YoudaoDict:
       ascii_mode: true
       no_inline: true
-    app_options/com.kapeli.dash:
-      ascii_mode: true
