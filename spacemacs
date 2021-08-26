@@ -59,12 +59,18 @@ values."
            )
      yaml
      nginx
-     sql
+     (sql :variables
+          sql-capitalize-keywords t
+          sql-backend nil
+          sql-auto-indent nil
+          )
      (helm :variables
            helm-enable-auto-resize t
+           hybrid-style-enable-hjkl-bindings t
            helm-no-header t
            helm-buffer-max-length nil
            helm-buffers-fuzzy-matching t
+           helm-use-fuzzy 'source
            helm-buffer-details-flag nil
            helm-grep-split-line-regexp "^\\([[:lower:][:upper:]]?:?.*?\\):\\([0-9]+\\)[:-]\\(.*\\)"
            )
@@ -77,12 +83,15 @@ values."
           lsp-ui-sideline-show-symbol t
           lsp-prefer-flymake t
           lsp-enable-snippet t
+          lsp-headerline-breadcrumb-enable nil
+          lsp-ui-doc-enable nil
           )
      (go :variables
          godoc-at-point-function 'godoc-gogetdoc
-         ;; company-go-gocode-args '(-unimported-packages)
-         gofmt-command "goimports"
+         go-backend 'lsp
          go-format-before-save t
+         gofmt-command "goimports"
+         go-use-golangci-lint t
          go-tab-width 4
          go-backend 'lsp
          )
@@ -100,11 +109,29 @@ values."
                       )
      better-defaults
      emacs-lisp
-     markdown
      dash
      syntax-checking
      git
      lua
+     markdown
+     asciidoc
+     dap
+     graphql
+     docker
+     (plantuml :variables
+               plantuml-jar-path "/usr/local/Cellar/plantuml/1.2021.9/libexec/plantuml.jar"
+               org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2021.9/libexec/plantuml.jar"
+               plantuml-default-exec-mode 'jar
+               )
+     (org :variables
+          org-enable-github-support t
+          org-enable-hugo-support t
+          org-enable-github-support t
+          org-enable-notifications t
+          org-wild-notifier-alert-time '(0)
+          org-agenda-span 'day
+          alert-default-style 'notifier
+          )
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -364,9 +391,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; 国内源
   (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        '(
+          ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-                ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("nongnu"       . "https://elpa.nongnu.org/nongnu/")
+          )
+        )
 
   ;; end of user-init
   )
@@ -395,6 +426,9 @@ you should place your code here."
   ;; (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'nothing)
   ;; (dolist (mouse '("<down-mouse-1>" "<mouse-1>"))
   ;;   (global-unset-key (kbd mouse)))
+
+  ;; 自动换行
+  (global-visual-line-mode 1)
 
   ;; 粘贴到系统剪切版
   (xclip-mode 1)
@@ -472,6 +506,78 @@ you should place your code here."
             (lambda ()
               (add-hook 'before-save-hook #'prettier-js nil t)))
 
+  ;; org
+  (with-eval-after-load 'org-capture
+    (defun org-task-capture-template()
+      "Return `org-capture' template string for Task"
+      (let* ((scheduled (format-time-string "<%Y-%m-%d %H:%M>" (time-add (current-time) 7200)))
+             (deadline (format-time-string "<%Y-%m-%d %H:%M>" (time-add (current-time) 86400))))
+        (mapconcat #'identity
+                   `(
+                     "* TODO %?"
+                     ,(concat "DEADLINE: " deadline " SCHEDULED: " scheduled)
+                     "%u"
+                     "\n"
+                     )
+                   "\n"
+                   )))
+    (add-to-list 'org-capture-templates
+                 '(
+                   "t"
+                   "Task"
+                   entry
+                   (file+headline "" "Tasks")
+                   (function org-task-capture-template)
+                 )
+                 )
+    (add-to-list 'org-capture-templates
+                 '(
+                   "n"
+                   "Note"
+                   entry
+                   (file+headline "" "Notes")
+                   "* %^{heading} %t %^g
+  %?
+"
+                   )
+                 )
+    (defun org-hugo-new-subtree-post-capture-template ()
+      "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+      (let* ((title (read-from-minibuffer "Title: ")) ;Prompt to enter the post title
+             (category (read-from-minibuffer "Category: "))
+             (fname (org-hugo-slug title)))
+        (mapconcat #'identity
+                   `(
+                     ,(concat "* TODO " title)
+                     ":PROPERTIES:"
+                     ,(concat ":EXPORT_FILE_NAME: " fname)
+                     ,(concat ":EXPORT_HUGO_BUNDLE: " category)
+                     ,(concat ":EXPORT_HUGO_CATEGORIES: " category)
+                     ,(concat (concat ":EXPORT_HUGO_TAGS: " category) "  %?")
+                     ":END:"
+                     "\n")          ;Place the cursor here finally
+                   "\n")))
+    (add-to-list 'org-capture-templates
+                 '("b"                ;`org-capture' binding + h
+                   "Blog"
+                   entry
+                   ;; It is assumed that below file is present in `org-directory'
+                   ;; and that it has a "Blog Ideas" heading. It can even be a
+                   ;; symlink pointing to the actual location of notes.org!
+                   (file "blog.org")
+                   (function org-hugo-new-subtree-post-capture-template)))
+    )
+
+  ;; emacs 守护进程负责Notify
+  (message "Emacs started")
+  (if (daemonp)
+      (progn
+        (org-wild-notifier-mode 1)
+        (message "Emacs Org Notify Started")
+        )
+    )
+
   ;; end of user-config
   )
 
@@ -502,9 +608,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(avy-timeout-seconds 0.01)
+ '(org-agenda-files '("~/org/notes.org"))
  '(package-selected-packages
-   (quote
-    (rjsx-mode import-js grizzl add-node-modules-path web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+   '(org-wild-notifier ox-hugo plantuml-mode lsp-mode rjsx-mode import-js grizzl add-node-modules-path web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode thrift projectile-rails inflections feature-mode wgrep smex ivy-hydra counsel-projectile counsel swiper ivy xclip go-guru go-eldoc company-go go-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode chruby bundler inf-ruby unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim markdown-toc markdown-mode magit-gitflow magit-popup htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip pos-tip flycheck mmm-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-lido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
