@@ -472,15 +472,17 @@ you should place your code here."
              (rvm--change-path 'rvm--current-gem-binary-path (rvm--gem-binary-path-from-gem-path gempath)))
          (setenv "GEM_HOME" "")
          (setenv "GEM_PATH" ""))))
+  (add-hook 'enh-ruby-mode-hook
+            (lambda ()
+              (setq company-backends (eval (car (get 'company-backends 'standard-value))))
+              ))
+
   ;; 搜索不要高亮
   (setq-default evil-ex-search-highlight-all nil)
 
   ;; 全局开启补全
   (global-company-mode)
   (setq company-minimum-prefix-length 1)
-  (eval-after-load 'company
-    '(push 'company-robe company-backends))
-  (advice-add 'inf-ruby-console-auto :before #'rvm-activate-corresponding-ruby)
 
 
   ;; 禁止分window后自动resize
