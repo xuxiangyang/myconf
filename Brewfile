@@ -13,7 +13,6 @@ tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
 tap "ringohub/redis-cli"
-tap "xuxiangyang/core", "git@github.com:xuxiangyang/homebrew-core.git"
 brew "jpeg", link: true
 brew "libpng"
 brew "jpeg-xl"

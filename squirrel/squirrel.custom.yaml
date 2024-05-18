@@ -10,6 +10,7 @@ patch:
     com.apple.Terminal:
       ascii_mode: true
       no_inline: true
+      vim_mode: true
     com.apple.Spotlight:
       ascii_mode: true
       no_inline: true
@@ -18,9 +19,11 @@ patch:
     com.googlecode.iterm2:
       ascii_mode: true
       no_inline: true
+      vim_mode: true
     org.vim.MacVim:
       ascii_mode: true
       no_inline: true
+      vim_mode: true
     com.sublimetext.3:
       ascii_mode: true
       no_inline: true
