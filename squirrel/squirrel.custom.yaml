@@ -1,35 +1,39 @@
 patch:
-  style/color_scheme: luna
-  style/font_point: 18
-  style/horizontal: true
+  style:
+    color_scheme: native
+    color_scheme_dark: native
+    candidate_list_layout: linear
+    horizontal: true
+    candidate_format: "%c %@ "   # 用 1/6 em 空格 U+2005 来控制编号 %c 和候选词 %@ 前后的空间
+    corner_radius: 5                             # 窗口圆角
+    dborder_width: 4                  #设置输入条左右宽度
+    hilited_corner_radius: 5                     # 高亮圆角
+    line_spacing: 10                              # 行间距(适用于竖排)
+    border_height: 4                             # 窗口上下高度，大于圆角半径才生效
+    border_width: 4                              # 窗口左右宽度，大于圆角半径才生效 
+    font_face: "PingFangSC"                      # 候选词字体
+    font_point: 18                               # 候选字大小
+    inline_preedit: true
   us_keyboard_layout: true
   app_options:
     com.kapeli.dashdoc:
       ascii_mode: true
-      no_inline: true
     com.apple.Terminal:
       ascii_mode: true
-      no_inline: true
       vim_mode: true
     com.apple.Spotlight:
       ascii_mode: true
-      no_inline: true
     com.blacktree.Quicksilver:
       ascii_mode: true
     com.googlecode.iterm2:
       ascii_mode: true
-      no_inline: true
       vim_mode: true
     org.vim.MacVim:
       ascii_mode: true
-      no_inline: true
       vim_mode: true
     com.sublimetext.3:
       ascii_mode: true
-      no_inline: true
     com.google.Chrome:
       ascii_mode: true
-      no_inline: true
     com.youdao.YoudaoDict:
       ascii_mode: true
-      no_inline: true

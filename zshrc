@@ -13,6 +13,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/usr/local/jadx/bin/:$PATH
 export PATH=/usr/local/opt/inetutils/libexec/gnubin:$PATH
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH=$HOME/anaconda3/bin:$PATH
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH" 
+export PATH="/Users/mico/.local/bin:$PATH"
 export KEYTIMEOUT=1
 export EDITOR=vim
 export VISUAL=vim
@@ -76,3 +79,34 @@ alias wxcli="/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/c
 
 #grpc
 export DCMAKE_PREFIX_PATH=~/.local:$PATH
+
+
+
+#
+
+# Source the Lazyman shell initialization for aliases and nvims selector
+# shellcheck source=.config/nvim-Lazyman/.lazymanrc
+# [ -f ~/.config/nvim-Lazyman/.lazymanrc ] && source ~/.config/nvim-Lazyman/.lazymanrc
+# Source the Lazyman .nvimsbind for nvims key binding
+# shellcheck source=.config/nvim-Lazyman/.nvimsbind
+# [ -f ~/.config/nvim-Lazyman/.nvimsbind ] && source ~/.config/nvim-Lazyman/.nvimsbind
+#
+export VCPKG_ROOT="$HOME/.vcpkg"
+
+conda-init() {
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('/Users/mico/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/Users/mico/anaconda3/etc/profile.d/conda.sh" ]; then
+# . "/Users/mico/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+      else
+# export PATH="/Users/mico/anaconda3/bin:$PATH"  # commented out by conda initialize
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+}
+
